@@ -14,7 +14,6 @@
 		C8B851942B1A336600FE593C /* TexTracerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B851932B1A336600FE593C /* TexTracerAppTests.swift */; };
 		C8B8519E2B1A336600FE593C /* TexTracerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B8519D2B1A336600FE593C /* TexTracerAppUITests.swift */; };
 		C8B851A02B1A336600FE593C /* TexTracerAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B8519F2B1A336600FE593C /* TexTracerAppUITestsLaunchTests.swift */; };
-		C8B851AD2B1A33A400FE593C /* troia.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B851AC2B1A33A400FE593C /* troia.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +44,6 @@
 		C8B851992B1A336600FE593C /* TexTracerAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TexTracerAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B8519D2B1A336600FE593C /* TexTracerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexTracerAppUITests.swift; sourceTree = "<group>"; };
 		C8B8519F2B1A336600FE593C /* TexTracerAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexTracerAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C8B851AC2B1A33A400FE593C /* troia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = troia.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +98,6 @@
 				C8B851842B1A336300FE593C /* ContentView.swift */,
 				C8B851862B1A336600FE593C /* Assets.xcassets */,
 				C8B851882B1A336600FE593C /* Preview Content */,
-				C8B851AC2B1A33A400FE593C /* troia.swift */,
 			);
 			path = TexTracerApp;
 			sourceTree = "<group>";
@@ -260,7 +257,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8B851AD2B1A33A400FE593C /* troia.swift in Sources */,
 				C8B851852B1A336300FE593C /* ContentView.swift in Sources */,
 				C8B851832B1A336300FE593C /* TexTracerAppApp.swift in Sources */,
 			);

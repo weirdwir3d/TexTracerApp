@@ -18,8 +18,8 @@ class ContractualPartner: Company {
 //        self.init(id: 0, registrationNr: 0, name: "", nrEmployees: 0)
 //    }
     
-    private func createOrderline(id: Int, brand: Brand) {
-        let orderline = Orderline(id: id, brand: brand, contractualPartner: self)
+    func createOrderline(id: Int, brand: Brand) -> Orderline {
+        return Orderline(id: id, brand: brand, contractualPartner: self)
     }
     
 }

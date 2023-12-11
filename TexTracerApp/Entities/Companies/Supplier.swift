@@ -1,10 +1,3 @@
-//
-//  Supplier.swift
-//  TexTracerApp
-//
-//  Created by opendag on 02/12/2023.
-//
-
 import Foundation
 
 class Supplier: Company {

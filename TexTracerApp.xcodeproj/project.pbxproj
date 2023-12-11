@@ -14,6 +14,22 @@
 		C8B851942B1A336600FE593C /* TexTracerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B851932B1A336600FE593C /* TexTracerAppTests.swift */; };
 		C8B8519E2B1A336600FE593C /* TexTracerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B8519D2B1A336600FE593C /* TexTracerAppUITests.swift */; };
 		C8B851A02B1A336600FE593C /* TexTracerAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B8519F2B1A336600FE593C /* TexTracerAppUITestsLaunchTests.swift */; };
+		C8E254232B27C56300274FC4 /* UploadEvidenceTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254222B27C56300274FC4 /* UploadEvidenceTask.swift */; };
+		C8E254262B27D39100274FC4 /* TasksPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254252B27D39100274FC4 /* TasksPage.swift */; };
+		C8E254282B27D61000274FC4 /* OrderEvidencePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254272B27D61000274FC4 /* OrderEvidencePage.swift */; };
+		C8E2542A2B27D64A00274FC4 /* CompliancePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254292B27D64A00274FC4 /* CompliancePage.swift */; };
+		C8E2542C2B27D65B00274FC4 /* MyAccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E2542B2B27D65B00274FC4 /* MyAccountPage.swift */; };
+		C8F66DC02B1B690A0011D89D /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DBF2B1B690A0011D89D /* Company.swift */; };
+		C8F66DC22B1B6B750011D89D /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DC12B1B6B750011D89D /* Supplier.swift */; };
+		C8F66DC42B1B75590011D89D /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DC32B1B75590011D89D /* Facility.swift */; };
+		C8F66DC62B1B79A30011D89D /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DC52B1B79A30011D89D /* Brand.swift */; };
+		C8F66DC82B1B7A030011D89D /* ContractualPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DC72B1B7A030011D89D /* ContractualPartner.swift */; };
+		C8F66DCA2B1B7FA40011D89D /* Orderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DC92B1B7FA40011D89D /* Orderline.swift */; };
+		C8F66DCC2B1B816C0011D89D /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DCB2B1B816C0011D89D /* Step.swift */; };
+		C8F66DCE2B1B8A290011D89D /* OrderStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DCD2B1B8A290011D89D /* OrderStep.swift */; };
+		C8F66DD12B1B8AAA0011D89D /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DD02B1B8AAA0011D89D /* Order.swift */; };
+		C8F66DD32B1B8F8A0011D89D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DD22B1B8F8A0011D89D /* Task.swift */; };
+		C8F66DD52B1B90570011D89D /* TaskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DD42B1B90570011D89D /* TaskStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +60,22 @@
 		C8B851992B1A336600FE593C /* TexTracerAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TexTracerAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B8519D2B1A336600FE593C /* TexTracerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexTracerAppUITests.swift; sourceTree = "<group>"; };
 		C8B8519F2B1A336600FE593C /* TexTracerAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexTracerAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C8E254222B27C56300274FC4 /* UploadEvidenceTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadEvidenceTask.swift; sourceTree = "<group>"; };
+		C8E254252B27D39100274FC4 /* TasksPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksPage.swift; sourceTree = "<group>"; };
+		C8E254272B27D61000274FC4 /* OrderEvidencePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEvidencePage.swift; sourceTree = "<group>"; };
+		C8E254292B27D64A00274FC4 /* CompliancePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompliancePage.swift; sourceTree = "<group>"; };
+		C8E2542B2B27D65B00274FC4 /* MyAccountPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountPage.swift; sourceTree = "<group>"; };
+		C8F66DBF2B1B690A0011D89D /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		C8F66DC12B1B6B750011D89D /* Supplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
+		C8F66DC32B1B75590011D89D /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
+		C8F66DC52B1B79A30011D89D /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		C8F66DC72B1B7A030011D89D /* ContractualPartner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractualPartner.swift; sourceTree = "<group>"; };
+		C8F66DC92B1B7FA40011D89D /* Orderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orderline.swift; sourceTree = "<group>"; };
+		C8F66DCB2B1B816C0011D89D /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		C8F66DCD2B1B8A290011D89D /* OrderStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStep.swift; sourceTree = "<group>"; };
+		C8F66DD02B1B8AAA0011D89D /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		C8F66DD22B1B8F8A0011D89D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		C8F66DD42B1B90570011D89D /* TaskStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +126,9 @@
 		C8B851812B1A336300FE593C /* TexTracerApp */ = {
 			isa = PBXGroup;
 			children = (
+				C8E254242B27D33300274FC4 /* Pages */,
+				C8F66DCF2B1B8A5B0011D89D /* Enums */,
+				C8F66DBD2B1B687D0011D89D /* Entities */,
 				C8B851822B1A336300FE593C /* TexTracerAppApp.swift */,
 				C8B851842B1A336300FE593C /* ContentView.swift */,
 				C8B851862B1A336600FE593C /* Assets.xcassets */,
@@ -125,6 +160,59 @@
 				C8B8519F2B1A336600FE593C /* TexTracerAppUITestsLaunchTests.swift */,
 			);
 			path = TexTracerAppUITests;
+			sourceTree = "<group>";
+		};
+		C8E254212B27C4C200274FC4 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				C8F66DD22B1B8F8A0011D89D /* Task.swift */,
+				C8E254222B27C56300274FC4 /* UploadEvidenceTask.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		C8E254242B27D33300274FC4 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				C8E254252B27D39100274FC4 /* TasksPage.swift */,
+				C8E254272B27D61000274FC4 /* OrderEvidencePage.swift */,
+				C8E254292B27D64A00274FC4 /* CompliancePage.swift */,
+				C8E2542B2B27D65B00274FC4 /* MyAccountPage.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		C8F66DBD2B1B687D0011D89D /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C8E254212B27C4C200274FC4 /* Task */,
+				C8F66DBE2B1B68D60011D89D /* Companies */,
+				C8F66DC32B1B75590011D89D /* Facility.swift */,
+				C8F66DC92B1B7FA40011D89D /* Orderline.swift */,
+				C8F66DCD2B1B8A290011D89D /* OrderStep.swift */,
+				C8F66DD02B1B8AAA0011D89D /* Order.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		C8F66DBE2B1B68D60011D89D /* Companies */ = {
+			isa = PBXGroup;
+			children = (
+				C8F66DBF2B1B690A0011D89D /* Company.swift */,
+				C8F66DC12B1B6B750011D89D /* Supplier.swift */,
+				C8F66DC52B1B79A30011D89D /* Brand.swift */,
+				C8F66DC72B1B7A030011D89D /* ContractualPartner.swift */,
+			);
+			path = Companies;
+			sourceTree = "<group>";
+		};
+		C8F66DCF2B1B8A5B0011D89D /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				C8F66DD42B1B90570011D89D /* TaskStatus.swift */,
+				C8F66DCB2B1B816C0011D89D /* Step.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +345,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8F66DCE2B1B8A290011D89D /* OrderStep.swift in Sources */,
 				C8B851852B1A336300FE593C /* ContentView.swift in Sources */,
+				C8F66DC62B1B79A30011D89D /* Brand.swift in Sources */,
+				C8F66DC22B1B6B750011D89D /* Supplier.swift in Sources */,
+				C8F66DD32B1B8F8A0011D89D /* Task.swift in Sources */,
+				C8F66DD52B1B90570011D89D /* TaskStatus.swift in Sources */,
+				C8F66DD12B1B8AAA0011D89D /* Order.swift in Sources */,
+				C8F66DC42B1B75590011D89D /* Facility.swift in Sources */,
+				C8E2542C2B27D65B00274FC4 /* MyAccountPage.swift in Sources */,
 				C8B851832B1A336300FE593C /* TexTracerAppApp.swift in Sources */,
+				C8F66DC82B1B7A030011D89D /* ContractualPartner.swift in Sources */,
+				C8F66DCA2B1B7FA40011D89D /* Orderline.swift in Sources */,
+				C8E2542A2B27D64A00274FC4 /* CompliancePage.swift in Sources */,
+				C8F66DCC2B1B816C0011D89D /* Step.swift in Sources */,
+				C8E254232B27C56300274FC4 /* UploadEvidenceTask.swift in Sources */,
+				C8F66DC02B1B690A0011D89D /* Company.swift in Sources */,
+				C8E254282B27D61000274FC4 /* OrderEvidencePage.swift in Sources */,
+				C8E254262B27D39100274FC4 /* TasksPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

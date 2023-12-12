@@ -19,6 +19,13 @@
 		C8E254282B27D61000274FC4 /* OrderEvidencePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254272B27D61000274FC4 /* OrderEvidencePage.swift */; };
 		C8E2542A2B27D64A00274FC4 /* CompliancePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254292B27D64A00274FC4 /* CompliancePage.swift */; };
 		C8E2542C2B27D65B00274FC4 /* MyAccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E2542B2B27D65B00274FC4 /* MyAccountPage.swift */; };
+		C8E2542F2B28F35500274FC4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E2542E2B28F35500274FC4 /* Color.swift */; };
+		C8E254342B28F7C900274FC4 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254332B28F7C900274FC4 /* TaskView.swift */; };
+		C8E254362B28FD2F00274FC4 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254352B28FD2F00274FC4 /* TaskDetailView.swift */; };
+		C8E254382B29035900274FC4 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254372B29035900274FC4 /* Chain.swift */; };
+		C8E2543A2B29037000274FC4 /* WhiteBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254392B29037000274FC4 /* WhiteBox.swift */; };
+		C8E2543C2B29103400274FC4 /* OrderBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E2543B2B29103400274FC4 /* OrderBadge.swift */; };
+		C8E2543E2B2913E000274FC4 /* ChainType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E2543D2B2913E000274FC4 /* ChainType.swift */; };
 		C8F66DC02B1B690A0011D89D /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DBF2B1B690A0011D89D /* Company.swift */; };
 		C8F66DC22B1B6B750011D89D /* Supplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DC12B1B6B750011D89D /* Supplier.swift */; };
 		C8F66DC42B1B75590011D89D /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F66DC32B1B75590011D89D /* Facility.swift */; };
@@ -65,6 +72,13 @@
 		C8E254272B27D61000274FC4 /* OrderEvidencePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEvidencePage.swift; sourceTree = "<group>"; };
 		C8E254292B27D64A00274FC4 /* CompliancePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompliancePage.swift; sourceTree = "<group>"; };
 		C8E2542B2B27D65B00274FC4 /* MyAccountPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountPage.swift; sourceTree = "<group>"; };
+		C8E2542E2B28F35500274FC4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		C8E254332B28F7C900274FC4 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		C8E254352B28FD2F00274FC4 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
+		C8E254372B29035900274FC4 /* Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
+		C8E254392B29037000274FC4 /* WhiteBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteBox.swift; sourceTree = "<group>"; };
+		C8E2543B2B29103400274FC4 /* OrderBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBadge.swift; sourceTree = "<group>"; };
+		C8E2543D2B2913E000274FC4 /* ChainType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainType.swift; sourceTree = "<group>"; };
 		C8F66DBF2B1B690A0011D89D /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		C8F66DC12B1B6B750011D89D /* Supplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supplier.swift; sourceTree = "<group>"; };
 		C8F66DC32B1B75590011D89D /* Facility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
@@ -126,9 +140,11 @@
 		C8B851812B1A336300FE593C /* TexTracerApp */ = {
 			isa = PBXGroup;
 			children = (
+				C8E254322B28F7B200274FC4 /* Components */,
+				C8E2542D2B28F33100274FC4 /* Extensions */,
 				C8E254242B27D33300274FC4 /* Pages */,
 				C8F66DCF2B1B8A5B0011D89D /* Enums */,
-				C8F66DBD2B1B687D0011D89D /* Entities */,
+				C8F66DBD2B1B687D0011D89D /* Models */,
 				C8B851822B1A336300FE593C /* TexTracerAppApp.swift */,
 				C8B851842B1A336300FE593C /* ContentView.swift */,
 				C8B851862B1A336600FE593C /* Assets.xcassets */,
@@ -182,7 +198,27 @@
 			path = Pages;
 			sourceTree = "<group>";
 		};
-		C8F66DBD2B1B687D0011D89D /* Entities */ = {
+		C8E2542D2B28F33100274FC4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C8E2542E2B28F35500274FC4 /* Color.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C8E254322B28F7B200274FC4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C8E254332B28F7C900274FC4 /* TaskView.swift */,
+				C8E254352B28FD2F00274FC4 /* TaskDetailView.swift */,
+				C8E254372B29035900274FC4 /* Chain.swift */,
+				C8E254392B29037000274FC4 /* WhiteBox.swift */,
+				C8E2543B2B29103400274FC4 /* OrderBadge.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C8F66DBD2B1B687D0011D89D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				C8E254212B27C4C200274FC4 /* Task */,
@@ -192,7 +228,7 @@
 				C8F66DCD2B1B8A290011D89D /* OrderStep.swift */,
 				C8F66DD02B1B8AAA0011D89D /* Order.swift */,
 			);
-			path = Entities;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C8F66DBE2B1B68D60011D89D /* Companies */ = {
@@ -211,6 +247,7 @@
 			children = (
 				C8F66DD42B1B90570011D89D /* TaskStatus.swift */,
 				C8F66DCB2B1B816C0011D89D /* Step.swift */,
+				C8E2543D2B2913E000274FC4 /* ChainType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -347,16 +384,23 @@
 			files = (
 				C8F66DCE2B1B8A290011D89D /* OrderStep.swift in Sources */,
 				C8B851852B1A336300FE593C /* ContentView.swift in Sources */,
+				C8E2543C2B29103400274FC4 /* OrderBadge.swift in Sources */,
 				C8F66DC62B1B79A30011D89D /* Brand.swift in Sources */,
+				C8E254382B29035900274FC4 /* Chain.swift in Sources */,
 				C8F66DC22B1B6B750011D89D /* Supplier.swift in Sources */,
+				C8E254342B28F7C900274FC4 /* TaskView.swift in Sources */,
 				C8F66DD32B1B8F8A0011D89D /* Task.swift in Sources */,
 				C8F66DD52B1B90570011D89D /* TaskStatus.swift in Sources */,
+				C8E2543A2B29037000274FC4 /* WhiteBox.swift in Sources */,
 				C8F66DD12B1B8AAA0011D89D /* Order.swift in Sources */,
 				C8F66DC42B1B75590011D89D /* Facility.swift in Sources */,
 				C8E2542C2B27D65B00274FC4 /* MyAccountPage.swift in Sources */,
 				C8B851832B1A336300FE593C /* TexTracerAppApp.swift in Sources */,
 				C8F66DC82B1B7A030011D89D /* ContractualPartner.swift in Sources */,
+				C8E2542F2B28F35500274FC4 /* Color.swift in Sources */,
 				C8F66DCA2B1B7FA40011D89D /* Orderline.swift in Sources */,
+				C8E254362B28FD2F00274FC4 /* TaskDetailView.swift in Sources */,
+				C8E2543E2B2913E000274FC4 /* ChainType.swift in Sources */,
 				C8E2542A2B27D64A00274FC4 /* CompliancePage.swift in Sources */,
 				C8F66DCC2B1B816C0011D89D /* Step.swift in Sources */,
 				C8E254232B27C56300274FC4 /* UploadEvidenceTask.swift in Sources */,
@@ -528,11 +572,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TexTracerApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Tex.tracer;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -540,6 +586,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.aldera.lisa.TexTracerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -556,11 +605,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TexTracerApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Tex.tracer;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -568,6 +619,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nl.aldera.lisa.TexTracerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -9,10 +9,16 @@ import SwiftUI
 
 struct CompliancePage: View {
     var body: some View {
-        Text("Compliance")
+        
+        NavigationStack{
+            Text("Compliance")
+        }.navigationTitle("Compliance")
+        
     }
 }
 
 #Preview {
-    CompliancePage()
+    NavigationView{
+        CompliancePage()
+    }
 }

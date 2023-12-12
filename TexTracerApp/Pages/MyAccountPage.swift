@@ -9,10 +9,15 @@ import SwiftUI
 
 struct MyAccountPage: View {
     var body: some View {
-        Text("My Account")
+        
+        NavigationStack {
+            Text("My Account")
+        }.navigationTitle("My Account")
     }
 }
 
 #Preview {
-    MyAccountPage()
+    NavigationView{
+        MyAccountPage()
+    }
 }

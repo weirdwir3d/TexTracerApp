@@ -9,10 +9,18 @@ import SwiftUI
 
 struct OrderEvidencePage: View {
     var body: some View {
-        Text("Order evidence")
+        
+        NavigationStack{
+            
+            Text("Order evidence")
+            
+        }.navigationTitle("Order evidence")
+        
     }
 }
 
 #Preview {
-    OrderEvidencePage()
+    NavigationView{
+        OrderEvidencePage()
+    }
 }

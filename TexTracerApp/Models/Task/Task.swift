@@ -1,6 +1,6 @@
 import Foundation
 
-class Task {
+class Task: Identifiable {
     let id: Int
     let receivedDate: Date
     let taskStatus: TaskStatus

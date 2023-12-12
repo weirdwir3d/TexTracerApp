@@ -28,7 +28,6 @@ struct ContentView: View {
                     Text("My account")
                 }
             
-            
         }
         
     }

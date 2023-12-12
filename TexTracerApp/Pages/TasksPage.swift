@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct TasksPage: View {
+    
+    @State var tasks = [
+        Task(id: 1, receivedDate: Date()),
+        Task(id: 2, receivedDate: Date()),
+        Task(id: 3, receivedDate: Date())
+    ]
+    
     var body: some View {
-        Text("Tasks")
+        NavigationStack {
+            List {
+                  ForEach(tasks) { task in
+                      TaskView(task: task)
+                  }
+                }
+        }
+        .navigationTitle("Tasks")
     }
 }
 
 #Preview {
-    TasksPage()
+    NavigationView {
+        TasksPage()
+    }
 }

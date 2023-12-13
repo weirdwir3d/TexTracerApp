@@ -1,15 +1,13 @@
 import Foundation
 
 class UploadEvidenceTask: Task {
-    let orderId: Int
-    let assignerId: Int
-    let assigneeId: Int
+    let orderCode: String
+    let assignerId: UUID
+    let assigneeId: UUID
     let orderSteps: [OrderStep]
-    var description: String
     
-    init(id: Int, receivedDate: Date, orderId: Int, assignerId: Int, assigneeId: Int, orderSteps: [OrderStep], description: String) {
-        self.orderId = orderId
-        self.description = description
+    init(id: UUID, receivedDate: Date, orderCode: String, assignerId: UUID, assigneeId: UUID, orderSteps: [OrderStep]) {
+        self.orderCode = orderCode
         self.assignerId = assignerId
         self.assigneeId = assigneeId
         self.orderSteps = orderSteps
@@ -34,7 +32,7 @@ class UploadEvidenceTask: Task {
             }
         }
         
-        return "Upload evidence for order \(orderId) for the steps: \(stepStrings.joined(separator: ", "))"
+        return "Upload evidence for order \(orderCode) for \(stepStrings.joined(separator: ", "))"
     }
     
 }

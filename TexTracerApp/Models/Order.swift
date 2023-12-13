@@ -1,8 +1,8 @@
 import Foundation
 
-class Order {
+class Order: Identifiable {
     let code: String
-    let orderlineId: Int
+    let orderlineId: UUID
     let styleNumber: String
     let contractualPartner: ContractualPartner
     let brand: Brand
@@ -11,7 +11,7 @@ class Order {
     var tasks: Task?
     var finalClientId: Int?
     
-    init(code: String, orderlineId: Int, styleNumber: String, contractualPartner: ContractualPartner, brand: Brand) {
+    init(code: String, orderlineId: UUID, styleNumber: String, contractualPartner: ContractualPartner, brand: Brand) {
         self.code = code
         self.orderlineId = orderlineId
         self.styleNumber = styleNumber

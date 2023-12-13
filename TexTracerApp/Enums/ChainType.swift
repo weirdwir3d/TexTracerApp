@@ -1,10 +1,3 @@
-//
-//  ChainTypes.swift
-//  TexTracerApp
-//
-//  Created by opendag on 12/12/2023.
-//
-
 import Foundation
 
 enum ChainType {

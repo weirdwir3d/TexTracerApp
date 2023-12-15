@@ -1,36 +1,31 @@
-//
-//  TaskDetailsView.swift
-//  TexTracerApp
-//
-//  Created by opendag on 12/12/2023.
-//
-
 import SwiftUI
 
 struct TaskView: View {
     
+    @EnvironmentObject var tasksStore: TasksStore
     let task: Task
     
     var body: some View {
-        NavigationLink(destination: TaskDetailView(task: task)) {
-              HStack {
-//                Image(playlist.coverImage)
-//                  .resizable()
-//                  .aspectRatio(contentMode: .fill)
-//                  .frame(width: 70, height: 70)
-//                  .cornerRadius(5)
-//                  .padding(.leading, 8)
-                  Text("Task with id \(task.id)")
-                  .font(.headline)
-                  .lineLimit(1)
+        NavigationLink(destination: TaskDetailView(task: task as! UploadEvidenceTask)) {
+            HStack {
+                Text(task.description)
+                    .font(.subheadline)
+                    .lineLimit(2)
                 Spacer()
-              }
-              .padding(.vertical, 8)
             }
-          }
+            .padding(.vertical, 8)
+        }
+        .environmentObject(tasksStore)
     }
+}
 
 
-//#Preview {
-//    TaskDetailsView(task: task)
-//}
+#Preview {
+    NavigationView {
+        TaskView(
+            task: UploadEvidenceTask(id: UUID(), receivedDate: Date(), orderCode: "FFA534", assignerId: UUID(), assigneeId: UUID(), orderSteps: [OrderStep(id: UUID(), step: Step.Spinning, supplierId: UUID()), OrderStep(id: UUID(), step: Step.Ginning, supplierId: UUID())])
+        )
+            .environmentObject(TasksStore())
+    }
+}
+

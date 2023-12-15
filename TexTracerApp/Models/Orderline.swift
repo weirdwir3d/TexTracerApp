@@ -1,14 +1,14 @@
 import Foundation
 
 class Orderline {
-    let id: Int
+    let id: UUID
     let brand: Brand
     let contractualPartner: ContractualPartner
     var isComplete: Bool
     let orderSteps: Array<OrderStep>?
     var orders: Array<Order>?
     
-    init(id: Int, brand: Brand, contractualPartner: ContractualPartner) {
+    init(id: UUID, brand: Brand, contractualPartner: ContractualPartner) {
         self.id = id
         self.brand = brand
         self.contractualPartner = contractualPartner

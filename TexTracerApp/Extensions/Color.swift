@@ -19,6 +19,8 @@ struct ColorTheme {
     let pinkColor = Color("PinkColor")
     let violetLightColor = Color("VioletLightColor")
     let violetUltraLightColor = Color("VioletUltraLightColor")
+    let darkGreyColor = Color("DarkGreyColor")
+    let lightGreyColor = Color("LightGreyColor")
 }
 
 

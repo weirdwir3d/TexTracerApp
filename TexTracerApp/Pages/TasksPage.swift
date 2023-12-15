@@ -1,24 +1,13 @@
-//
-//  TasksPage.swift
-//  TexTracerApp
-//
-//  Created by opendag on 12/12/2023.
-//
-
 import SwiftUI
 
 struct TasksPage: View {
     
-    @State var tasks = [
-        Task(id: 1, receivedDate: Date()),
-        Task(id: 2, receivedDate: Date()),
-        Task(id: 3, receivedDate: Date())
-    ]
+    @EnvironmentObject var tasksStore: TasksStore
     
     var body: some View {
         NavigationStack {
             List {
-                  ForEach(tasks) { task in
+                ForEach(tasksStore.getTasks()) { task in
                       TaskView(task: task)
                   }
                 }
@@ -29,6 +18,7 @@ struct TasksPage: View {
 
 #Preview {
     NavigationView {
-        TasksPage()
-    }
+                TasksPage()
+                    .environmentObject(TasksStore())
+            }
 }

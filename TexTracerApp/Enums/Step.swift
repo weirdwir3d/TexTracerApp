@@ -1,10 +1,3 @@
-//
-//  Enums.swift
-//  TexTracerApp
-//
-//  Created by opendag on 02/12/2023.
-//
-
 import Foundation
 
 enum Step {
@@ -14,3 +7,21 @@ enum Step {
     case Packing
     case Sewing
 }
+
+extension Step {
+    var stringValue: String {
+        switch self {
+        case .Ginning:
+            return "Ginning"
+        case .Spinning:
+            return "Spinning"
+        case .Trims:
+            return "Trims"
+        case .Packing:
+            return "Packing"
+        case .Sewing:
+            return "Sewing"
+        }
+    }
+}
+

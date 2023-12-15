@@ -1,10 +1,3 @@
-//
-//  WhiteBox.swift
-//  TexTracerApp
-//
-//  Created by opendag on 12/12/2023.
-//
-
 import SwiftUI
 
 struct WhiteBox<Content: View>: View {

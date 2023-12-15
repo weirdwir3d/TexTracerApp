@@ -1,11 +1,11 @@
 import Foundation
 
 class OrderStep: Equatable {
-    let id: Int
+    let id: UUID
     let step: Step
     let supplierId: UUID
     
-    init(id: Int, step: Step, supplierId: UUID) {
+    init(id: UUID, step: Step, supplierId: UUID) {
         self.id = id
         self.step = step
         self.supplierId = supplierId

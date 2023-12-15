@@ -19,7 +19,7 @@ struct TexTracerAppApp: App {
         let bestPartner = ContractualPartner(id: UUID(), registrationNr: 3, name: "Best Partner")
         
         //contractual partner creates orderline
-        let orderline = bestPartner.createOrderline(id: 99, brand: zara)
+        let orderline = bestPartner.createOrderline(id: UUID(), brand: zara)
         
         //there are 7 orders for this orderline:
         //5 orders have the same styleNrr: "AW23D001"
@@ -44,11 +44,11 @@ struct TexTracerAppApp: App {
         
         orders.forEach(orderline.addOrder)
         
-        let orderSteps = [OrderStep(id: 10, step: Step.Trims, supplierId: texfiber.id),
-                          OrderStep(id: 11, step: Step.Spinning, supplierId: texfiber.id),
-                          OrderStep(id: 12, step: Step.Ginning, supplierId: texfiber.id),
-                          OrderStep(id: 13, step: Step.Packing, supplierId: texfiber.id),
-                          OrderStep(id: 14, step: Step.Sewing, supplierId: finestitch.id),
+        let orderSteps = [OrderStep(id: UUID(), step: Step.Trims, supplierId: texfiber.id),
+                          OrderStep(id: UUID(), step: Step.Spinning, supplierId: texfiber.id),
+                          OrderStep(id: UUID(), step: Step.Ginning, supplierId: texfiber.id),
+                          OrderStep(id: UUID(), step: Step.Packing, supplierId: texfiber.id),
+                          OrderStep(id: UUID(), step: Step.Sewing, supplierId: finestitch.id),
         ]
         
         //steps:

@@ -8,7 +8,7 @@ struct TasksPage: View {
         NavigationStack {
             List {
                 ForEach(tasksStore.getTasks()) { task in
-                      TaskView(task: task)
+                    TaskView(task: task)
                   }
                 }
         }

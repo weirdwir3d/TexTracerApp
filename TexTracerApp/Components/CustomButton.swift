@@ -1,13 +1,12 @@
 import SwiftUI
 
 struct CustomButton: View {
-    let text: Text
+    let action: () -> Void
+    let label: () -> Text
 
     var body: some View {
-        Button(action: {
-            // Add your button action here
-        }) {
-            text
+        Button(action: action) {
+            label()
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.accentColor)
@@ -19,6 +18,10 @@ struct CustomButton: View {
 }
 
 #Preview {
-    CustomButton(text: Text("Upload evidence"))
+    CustomButton(action: {}) {
+        Text("Upload evidence")
+    }
 }
+
+
 

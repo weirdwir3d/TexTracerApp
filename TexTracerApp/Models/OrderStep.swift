@@ -1,6 +1,6 @@
 import Foundation
 
-class OrderStep: Equatable {
+class OrderStep: Equatable, Identifiable {
     let id: UUID
     let step: Step
     let supplierId: UUID

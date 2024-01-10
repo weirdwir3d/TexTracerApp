@@ -1,6 +1,6 @@
 import Foundation
 
-class OrderStep: Equatable, Identifiable {
+class OrderStep: Equatable, Identifiable, CustomStringConvertible {
     let id: UUID
     let step: Step
     let supplierId: UUID
@@ -16,5 +16,9 @@ class OrderStep: Equatable, Identifiable {
                        lhs.step == rhs.step &&
                        lhs.supplierId == rhs.supplierId
     }
+    
+    var description: String {
+            return "id: \(id), step: \(step)"
+        }
     
 }

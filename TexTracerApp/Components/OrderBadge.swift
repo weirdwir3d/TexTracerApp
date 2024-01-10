@@ -13,7 +13,7 @@ struct OrderBadge: View {
         var body: some View {
             ZStack {
                 Circle()
-                    .foregroundColor(.red)
+                    .foregroundColor(Color.theme.accentColor)
                     .frame(width: 20, height: 20)
 
                 Text("\(number)")

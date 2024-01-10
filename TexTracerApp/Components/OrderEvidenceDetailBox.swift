@@ -1,35 +1,53 @@
 import SwiftUI
 
-struct OrderEvidenceDetailBox: View {
+struct OrderEvidenceDetailBox<T: Task>: View {
     
     @State private var isBlinking = false
     
-    let task: UploadEvidenceTask
+    let task: T
     
     var body: some View {
-        
         WhiteBox {
             VStack(spacing: 0) {
-                //Red icon, title and date block next to assigned by block
+                // Red icon, title and date block next to assigned by block
                 HStack {
                     HStack {
                         OrderBadge(number: 5)
-                        VStack {
-                            Text("Order \(task.orderCode)")
-                            Text("date: \(task.receivedDate)")
+                        VStack(alignment: .leading) {
+                            Text("Order \(task.orderCode!)")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                            Text("12/04/2023")
+                                .font(.caption)
                         }
                     }
                     Spacer()
-                    Text("by: \(task.assignerId)")
+                    VStack {
+                        Text("Assigned by:")
+                            .fontWeight(.bold)
+                        Text("FashionLead")
+                    }
                 }
                 
                 Spacer().frame(height: 20)
                 
                 HStack {
-                    VStack {
-                        Text("Style number:")
-                        Text("Delivery to:")
-                        Text("Final client:")
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Style number:")
+                                .fontWeight(.bold)
+                            Text("AW23D001")
+                        }
+                        HStack {
+                            Text("Delivery to:")
+                                .fontWeight(.bold)
+                            Text("EleganceForge")
+                        }
+                        HStack {
+                            Text("Final client:")
+                                .fontWeight(.bold)
+                            Text("H&M")
+                        }
                     }
                     
                     Spacer()
@@ -37,11 +55,12 @@ struct OrderEvidenceDetailBox: View {
                 
                 Spacer().frame(height: 26)
                 
-                Chain(task: task)
-                
+                HStack {
+                    Chain(task: task)
+                    Spacer()
+                }
             }
         }
-        
     }
 }
 
@@ -53,3 +72,13 @@ struct OrderEvidenceDetailBox: View {
     )
     )
 }
+
+#Preview {
+    OrderEvidenceDetailBox(task: ReviewEvidenceTask(
+        id: UUID(), receivedDate: Date(), orderCode: "FFA535", assignerId: UUID(), assigneeId: UUID(), orderSteps: [
+            OrderStep(id: UUID(), step: Step.Spinning, supplierId: UUID()), OrderStep(id: UUID(), step: Step.Ginning, supplierId: UUID()), OrderStep(id: UUID(), step: Step.Trims, supplierId: UUID()), OrderStep(id: UUID(), step: Step.Packing, supplierId: UUID())
+        ]
+    )
+    )
+}
+

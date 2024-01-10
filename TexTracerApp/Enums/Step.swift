@@ -6,6 +6,12 @@ enum Step {
     case Ginning
     case Packing
     case Sewing
+    case Dyeing
+    case Tanning
+    case FabricTrading
+    case DesignAndDevelopment
+    case Printing
+    case Harvesting
 }
 
 extension Step {
@@ -21,6 +27,18 @@ extension Step {
             return "Packing"
         case .Sewing:
             return "Sewing"
+        case .Dyeing:
+            return "Sewing"
+        case .Tanning:
+            return "Tanning"
+        case .FabricTrading:
+            return "Fabric Trading"
+        case .DesignAndDevelopment:
+            return "Design & Development"
+        case .Printing:
+            return "Printing"
+        case .Harvesting:
+            return "Harvesting"
         }
     }
 }

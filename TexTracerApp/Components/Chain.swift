@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct Chain: View {
-    let task: UploadEvidenceTask
+    let task: Task
 
     var body: some View {
         VStack {
@@ -10,12 +10,15 @@ struct Chain: View {
     }
 
     func generateChain() -> some View {
-
         return VStack(spacing: 0) {
-            ChainLinks(orderSteps: task.orderSteps)
+            if let uploadTask = task as? UploadEvidenceTask {
+                ChainLinks(orderSteps: uploadTask.orderSteps)
+            } else if let reviewTask = task as? ReviewEvidenceTask {
+                // Handle ReviewEvidenceTask accordingly
             }
         }
     }
+}
 
 
 

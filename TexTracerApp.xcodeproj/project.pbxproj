@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C86051BC2B4EEE320047ADD4 /* ReviewEvidenceTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86051BB2B4EEE320047ADD4 /* ReviewEvidenceTask.swift */; };
+		C86051BE2B4EF8290047ADD4 /* OrderDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86051BD2B4EF8290047ADD4 /* OrderDetailPage.swift */; };
+		C86204342B4C4505003B5BA9 /* CustomPreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86204332B4C4505003B5BA9 /* CustomPreviewProvider.swift */; };
 		C8B851832B1A336300FE593C /* TexTracerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B851822B1A336300FE593C /* TexTracerAppApp.swift */; };
 		C8B851852B1A336300FE593C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B851842B1A336300FE593C /* ContentView.swift */; };
 		C8B851872B1A336600FE593C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B851862B1A336600FE593C /* Assets.xcassets */; };
@@ -17,9 +20,10 @@
 		C8C500602B2C4A0200B36674 /* CheckBoxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5005F2B2C4A0200B36674 /* CheckBoxToggleStyle.swift */; };
 		C8C500622B2C4CCE00B36674 /* StepSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C500612B2C4CCE00B36674 /* StepSwitch.swift */; };
 		C8C500642B2C692600B36674 /* UploadEvidenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C500632B2C692600B36674 /* UploadEvidenceView.swift */; };
+		C8C500662B2E101A00B36674 /* StepsProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C500652B2E101A00B36674 /* StepsProgressBar.swift */; };
 		C8E254232B27C56300274FC4 /* UploadEvidenceTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254222B27C56300274FC4 /* UploadEvidenceTask.swift */; };
 		C8E254262B27D39100274FC4 /* TasksPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254252B27D39100274FC4 /* TasksPage.swift */; };
-		C8E254282B27D61000274FC4 /* OrderEvidencePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254272B27D61000274FC4 /* OrderEvidencePage.swift */; };
+		C8E254282B27D61000274FC4 /* AllOrdersPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254272B27D61000274FC4 /* AllOrdersPage.swift */; };
 		C8E2542A2B27D64A00274FC4 /* CompliancePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254292B27D64A00274FC4 /* CompliancePage.swift */; };
 		C8E2542C2B27D65B00274FC4 /* MyAccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E2542B2B27D65B00274FC4 /* MyAccountPage.swift */; };
 		C8E2542F2B28F35500274FC4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E2542E2B28F35500274FC4 /* Color.swift */; };
@@ -64,6 +68,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C86051BB2B4EEE320047ADD4 /* ReviewEvidenceTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEvidenceTask.swift; sourceTree = "<group>"; };
+		C86051BD2B4EF8290047ADD4 /* OrderDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailPage.swift; sourceTree = "<group>"; };
+		C86204332B4C4505003B5BA9 /* CustomPreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPreviewProvider.swift; sourceTree = "<group>"; };
 		C8B8517F2B1A336300FE593C /* TexTracerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TexTracerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B851822B1A336300FE593C /* TexTracerAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexTracerAppApp.swift; sourceTree = "<group>"; };
 		C8B851842B1A336300FE593C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,9 +84,10 @@
 		C8C5005F2B2C4A0200B36674 /* CheckBoxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxToggleStyle.swift; sourceTree = "<group>"; };
 		C8C500612B2C4CCE00B36674 /* StepSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSwitch.swift; sourceTree = "<group>"; };
 		C8C500632B2C692600B36674 /* UploadEvidenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadEvidenceView.swift; sourceTree = "<group>"; };
+		C8C500652B2E101A00B36674 /* StepsProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsProgressBar.swift; sourceTree = "<group>"; };
 		C8E254222B27C56300274FC4 /* UploadEvidenceTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadEvidenceTask.swift; sourceTree = "<group>"; };
 		C8E254252B27D39100274FC4 /* TasksPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksPage.swift; sourceTree = "<group>"; };
-		C8E254272B27D61000274FC4 /* OrderEvidencePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEvidencePage.swift; sourceTree = "<group>"; };
+		C8E254272B27D61000274FC4 /* AllOrdersPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOrdersPage.swift; sourceTree = "<group>"; };
 		C8E254292B27D64A00274FC4 /* CompliancePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompliancePage.swift; sourceTree = "<group>"; };
 		C8E2542B2B27D65B00274FC4 /* MyAccountPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountPage.swift; sourceTree = "<group>"; };
 		C8E2542E2B28F35500274FC4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -164,6 +172,7 @@
 				C8B851842B1A336300FE593C /* ContentView.swift */,
 				C8B851862B1A336600FE593C /* Assets.xcassets */,
 				C8B851882B1A336600FE593C /* Preview Content */,
+				C86204332B4C4505003B5BA9 /* CustomPreviewProvider.swift */,
 			);
 			path = TexTracerApp;
 			sourceTree = "<group>";
@@ -198,6 +207,7 @@
 			children = (
 				C8F66DD22B1B8F8A0011D89D /* Task.swift */,
 				C8E254222B27C56300274FC4 /* UploadEvidenceTask.swift */,
+				C86051BB2B4EEE320047ADD4 /* ReviewEvidenceTask.swift */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -206,9 +216,10 @@
 			isa = PBXGroup;
 			children = (
 				C8E254252B27D39100274FC4 /* TasksPage.swift */,
-				C8E254272B27D61000274FC4 /* OrderEvidencePage.swift */,
+				C8E254272B27D61000274FC4 /* AllOrdersPage.swift */,
 				C8E254292B27D64A00274FC4 /* CompliancePage.swift */,
 				C8E2542B2B27D65B00274FC4 /* MyAccountPage.swift */,
+				C86051BD2B4EF8290047ADD4 /* OrderDetailPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -235,6 +246,7 @@
 				C8C5005F2B2C4A0200B36674 /* CheckBoxToggleStyle.swift */,
 				C8C500612B2C4CCE00B36674 /* StepSwitch.swift */,
 				C8C500632B2C692600B36674 /* UploadEvidenceView.swift */,
+				C8C500652B2E101A00B36674 /* StepsProgressBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -415,8 +427,10 @@
 				C8C500622B2C4CCE00B36674 /* StepSwitch.swift in Sources */,
 				C8B851852B1A336300FE593C /* ContentView.swift in Sources */,
 				C8E2543C2B29103400274FC4 /* OrderBadge.swift in Sources */,
+				C86051BE2B4EF8290047ADD4 /* OrderDetailPage.swift in Sources */,
 				C8F66DC62B1B79A30011D89D /* Brand.swift in Sources */,
 				C8ECFF492B2A3D1C00D667F2 /* CustomButton.swift in Sources */,
+				C86204342B4C4505003B5BA9 /* CustomPreviewProvider.swift in Sources */,
 				C8E254382B29035900274FC4 /* OrderEvidenceDetailBox.swift in Sources */,
 				C8F66DC22B1B6B750011D89D /* Supplier.swift in Sources */,
 				C8E254342B28F7C900274FC4 /* TaskView.swift in Sources */,
@@ -432,7 +446,9 @@
 				C8F66DC82B1B7A030011D89D /* ContractualPartner.swift in Sources */,
 				C8E2542F2B28F35500274FC4 /* Color.swift in Sources */,
 				C8F66DCA2B1B7FA40011D89D /* Orderline.swift in Sources */,
+				C86051BC2B4EEE320047ADD4 /* ReviewEvidenceTask.swift in Sources */,
 				C8E254362B28FD2F00274FC4 /* TaskDetailView.swift in Sources */,
+				C8C500662B2E101A00B36674 /* StepsProgressBar.swift in Sources */,
 				C8C500642B2C692600B36674 /* UploadEvidenceView.swift in Sources */,
 				C8E254412B29B42300274FC4 /* TasksStore.swift in Sources */,
 				C8E2543E2B2913E000274FC4 /* ChainType.swift in Sources */,
@@ -441,7 +457,7 @@
 				C8E254232B27C56300274FC4 /* UploadEvidenceTask.swift in Sources */,
 				C8C500602B2C4A0200B36674 /* CheckBoxToggleStyle.swift in Sources */,
 				C8F66DC02B1B690A0011D89D /* Company.swift in Sources */,
-				C8E254282B27D61000274FC4 /* OrderEvidencePage.swift in Sources */,
+				C8E254282B27D61000274FC4 /* AllOrdersPage.swift in Sources */,
 				C8E254262B27D39100274FC4 /* TasksPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,6 +622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TexTracerApp/Preview Content\"";
+				DEVELOPMENT_TEAM = WUSW867AZH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Tex.tracer;
@@ -639,6 +656,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TexTracerApp/Preview Content\"";
+				DEVELOPMENT_TEAM = WUSW867AZH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Tex.tracer;

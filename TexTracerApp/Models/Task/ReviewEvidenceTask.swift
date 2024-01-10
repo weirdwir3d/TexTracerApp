@@ -1,19 +1,19 @@
 import Foundation
 
-class UploadEvidenceTask: Task {
+class ReviewEvidenceTask: Task {
     let assignerId: UUID
     let assigneeId: UUID
     let orderSteps: [OrderStep]
-
+    
     init(id: UUID, receivedDate: Date, orderCode: String?, assignerId: UUID, assigneeId: UUID, orderSteps: [OrderStep]) {
         self.assignerId = assignerId
         self.assigneeId = assigneeId
         self.orderSteps = orderSteps
-
+        
         super.init(id: id, receivedDate: receivedDate, orderCode: orderCode)
         self.description = addDescription()
     }
-
+    
     func addDescription() -> String {
         let stepStrings = orderSteps.map { step in
             switch step.step {
@@ -41,12 +41,8 @@ class UploadEvidenceTask: Task {
                 return "Harvesting"
             }
         }
-
-        if let orderCode = orderCode {
-            return "Upload evidence for order \(orderCode) for \(stepStrings.joined(separator: ", "))"
-        } else {
-            return "Upload evidence for an unspecified order for \(stepStrings.joined(separator: ", "))"
-        }
+        
+        return "Review evidence for order \(orderCode) for \(stepStrings.joined(separator: ", "))"
     }
+    
 }
-

@@ -34,3 +34,11 @@ class Order: Identifiable {
         }
 
 }
+
+extension Order {
+    static var test: Order {
+        return Order(
+            code: "FFA534", orderlineId: UUID(), styleNumber: "AW23D001", contractualPartner: ContractualPartner(id: UUID(), registrationNr: 45, name: "WeaveLink"), brand: Brand(id: UUID(), registrationNr: 32, name: "H&M")
+        )
+    }
+}

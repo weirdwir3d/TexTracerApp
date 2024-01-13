@@ -1,13 +1,9 @@
-//
-//  SelectOrdersPage.swift
-//  TexTracerApp
-//
-//  Created by opendag on 13/01/2024.
-//
-
 import SwiftUI
 
 struct SelectOrdersPage: View {
+    
+    @EnvironmentObject var selectedDataStore: SelectedDataStore
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
@@ -15,4 +11,5 @@ struct SelectOrdersPage: View {
 
 #Preview {
     SelectOrdersPage()
+        .environmentObject(SelectedDataStore())
 }

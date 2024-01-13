@@ -9,33 +9,36 @@ struct ContentView: View {
     }
     
     var body: some View {
-        TabView {
-            TasksPage()
-                .environmentObject(tasksStore)
-                .tabItem {
-                    Image(systemName: "checklist")
-                    Text("Tasks")
-                }
-            
-            AllOrdersPage()
-                .environmentObject(tasksStore)
-                .tabItem {
-                    Image(systemName: "checkmark.circle")
-                    Text("Order evidence")
-                }
-            
-            CompliancePage()
-                .tabItem {
-                    Image(systemName: "doc")
-                    Text("Compliance")
-                }
-            
-            MyAccountPage()
-                .tabItem {
-                    Image(systemName: "person.crop.circle.fill")
-                    Text("My account")
-                }
-        }
+        NavigationView {
+            TabView {
+                TasksPage()
+                    .environmentObject(tasksStore)
+                    .tabItem {
+                        Image(systemName: "checklist")
+                        Text("Tasks")
+                    }
+                
+                AllOrdersPage()
+                    .environmentObject(tasksStore)
+                    .tabItem {
+                        Image(systemName: "checkmark.circle")
+                        Text("Order evidence")
+                    }
+                
+                CompliancePage()
+                    .tabItem {
+                        Image(systemName: "doc")
+                        Text("Compliance")
+                    }
+                
+                MyAccountPage()
+                    .tabItem {
+                        Image(systemName: "person.crop.circle.fill")
+                        Text("My account")
+                    }
+            }
+        }.navigationTitle("Tasks")
+        
         
         .onAppear {
             loadInitialData()

@@ -1,18 +1,15 @@
-//
-//  CustomUnderlinedText.swift
-//  TexTracerApp
-//
-//  Created by opendag on 12/01/2024.
-//
-
 import SwiftUI
 
 struct CustomUnderlinedText: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    var text: String
+    var action: () -> Void
 
-#Preview {
-    CustomUnderlinedText()
+    var body: some View {
+        Text(text)
+            .foregroundColor(Color("AccentColor"))
+            .underline()
+            .onTapGesture {
+                action()
+            }
+    }
 }

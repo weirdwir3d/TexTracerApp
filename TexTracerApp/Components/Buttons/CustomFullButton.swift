@@ -13,7 +13,7 @@ struct CustomFullButton: View {
                 .foregroundColor(.white)
                 .cornerRadius(30)
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 

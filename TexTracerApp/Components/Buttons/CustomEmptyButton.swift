@@ -11,9 +11,13 @@ struct CustomEmptyButton: View {
             label()
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Color.accentColor)
-                .foregroundColor(.white)
+                .background(.white)
+                .foregroundColor(Color.accentColor)
                 .cornerRadius(30)
+                .overlay(
+                                    RoundedRectangle(cornerRadius: 30)
+                                        .stroke(Color.accentColor, lineWidth: 1) // Adjust the border width as needed
+                                )
         }
         .padding()
     }

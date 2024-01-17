@@ -15,12 +15,14 @@ class SelectedDataStore: ObservableObject {
     @Published var picturesForSteps: [OrderStep: Image] = [:]
     //list of steps that share the same image
     @Published var stepsWithSharedPictures: [OrderStep] = []
+    //list of orders the user can upload evidence for
+    @Published var orders: [Order] = []
     //list of orders the user selected to upload evidence for
     @Published var selectedOrders: [Order] = []
     
     
     func addTask(_ taskToAdd: UploadEvidenceTask) {
-        self.task = taskToAdd
+        task = taskToAdd
     }
     
     //remove step the user chose to upload order evidence for
@@ -54,6 +56,26 @@ class SelectedDataStore: ObservableObject {
     func getSelectedSteps() -> [OrderStep] {
         return selectedSteps
     }
+    
+    //add orders the user can upload order evidence for
+    func addOrders(_ ordersToAdd: [Order]) {
+        orders.append(contentsOf: ordersToAdd)
+    }
+    
+    //all orders the user can upload order evidence for
+    func getOrders() -> [Order] {
+            return Array(Set(orders))
+        }
+    
+    //add orders the user chose to upload order evidence for
+    func addSelectedOrders(_ orders: [Order]) {
+        selectedOrders.append(contentsOf: orders)
+    }
+    
+    //all orders the user chose to upload order evidence for
+    func getSelectedOrders() -> [Order] {
+            return selectedOrders
+        }
     
 }
 

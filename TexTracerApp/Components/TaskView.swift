@@ -6,7 +6,7 @@ struct TaskView: View {
     let task: Task
     
     var body: some View {
-        NavigationLink(destination: SelectStepsPage(task: task as! UploadEvidenceTask)) {
+        NavigationLink(destination: OrderDetailsPage(task: task as! UploadEvidenceTask)) {
             HStack {
                 Text(task.description)
                     .font(.subheadline)

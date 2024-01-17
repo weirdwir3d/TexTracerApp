@@ -52,7 +52,7 @@ struct AllOrdersPage: View {
                 UINavigationBar.appearance().topItem?.title = "All orders"
             }
             .background(Color(.systemBackground))
-            .navigationBarTitle("Order evidence", displayMode: .inline)
+            .navigationBarTitle("All orders", displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
                     // Handle the action when the filters button is tapped

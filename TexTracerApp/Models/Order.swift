@@ -1,6 +1,6 @@
 import Foundation
 
-class Order: Identifiable {
+class Order: Identifiable, Hashable, Equatable {
     let code: String
     let orderlineId: UUID
     let styleNumber: String
@@ -20,6 +20,17 @@ class Order: Identifiable {
         self.orderSteps = []
     }
     
+    static func == (lhs: Order, rhs: Order) -> Bool {
+        return lhs.code == rhs.code
+            && lhs.orderlineId == rhs.orderlineId
+            && lhs.styleNumber == rhs.styleNumber
+            && lhs.contractualPartner == rhs.contractualPartner
+            && lhs.brand == rhs.brand
+            && lhs.isComplete == rhs.isComplete
+            && lhs.orderSteps == rhs.orderSteps
+            // Add comparisons for other properties if needed
+    }
+    
     func addOrderStep(orderStep: OrderStep) -> Bool {
         orderSteps.append(orderStep)
 
@@ -30,9 +41,14 @@ class Order: Identifiable {
     }
     
     func addOrderSteps(_ steps: [OrderStep]) {
-            orderSteps.append(contentsOf: steps)
-        }
-
+        orderSteps.append(contentsOf: steps)
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(code)
+        hasher.combine(orderlineId)
+        // Combine other properties as needed
+    }
 }
 
 extension Order {
@@ -41,4 +57,17 @@ extension Order {
             code: "FFA534", orderlineId: UUID(), styleNumber: "AW23D001", contractualPartner: ContractualPartner(id: UUID(), registrationNr: 45, name: "WeaveLink"), brand: Brand(id: UUID(), registrationNr: 32, name: "H&M")
         )
     }
+    
+    static var test2: Order {
+        return Order(
+            code: "FFA535", orderlineId: UUID(), styleNumber: "AW23D001", contractualPartner: ContractualPartner(id: UUID(), registrationNr: 45, name: "WeaveLink"), brand: Brand(id: UUID(), registrationNr: 32, name: "H&M")
+        )
+    }
+    
+    static var test3: Order {
+        return Order(
+            code: "FFA536", orderlineId: UUID(), styleNumber: "AW23D002", contractualPartner: ContractualPartner(id: UUID(), registrationNr: 45, name: "WeaveLink"), brand: Brand(id: UUID(), registrationNr: 32, name: "H&M")
+        )
+    }
 }
+

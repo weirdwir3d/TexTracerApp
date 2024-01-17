@@ -7,7 +7,7 @@ struct OrderEvidenceDetailBox<T: Task>: View {
     let task: T
     
     var body: some View {
-        NavigationLink(destination: SelectStepsPage(task: task as! UploadEvidenceTask)) {
+        NavigationLink(destination: OrderDetailsPage(task: task as! UploadEvidenceTask)) {
 //        NavigationLink(destination: OrderDetailPage(task: task)) {
             WhiteBox {
                 OrderDetailsArea(task: task)

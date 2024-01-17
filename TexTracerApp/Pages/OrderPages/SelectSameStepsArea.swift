@@ -1,12 +1,10 @@
 import SwiftUI
-import UIKit
 
-struct SelectSameEvidenceStepsPage: View {
+struct SelectSameStepsArea: View {
     
     @EnvironmentObject var selectedDataStore: SelectedDataStore
     @State private var toggledSteps: [String] = []
-    @State private var isNextPageActive: Bool = false
-    @Environment(\.presentationMode) var presentationMode
+    @Binding var currentArea: Int
     
     var body: some View {
         
@@ -33,30 +31,21 @@ struct SelectSameEvidenceStepsPage: View {
             
             CustomFullButton(action: {
                 print("Selected order Steps: \(selectedDataStore.getSelectedSteps())")
-                isNextPageActive = true
+                currentArea = 3
             }) {
                 Text("Select orders")
             }
             .buttonStyle(PlainButtonStyle())
             
             CustomUnderlinedText(text: "Back to select steps") {
-                presentationMode.wrappedValue.dismiss()
             }
             
         }
-        
-//        NavigationLink(
-//            destination: SelectOrdersPage().environmentObject(selectedDataStore),
-//            isActive: $isNextPageActive,
-//            label: {
-//                EmptyView()
-//            }
-//        )
         
     }
 }
 
 #Preview {
-    SelectSameEvidenceStepsPage()
+    SelectSameStepsArea(currentArea: .constant(2))
         .environmentObject(SelectedDataStore())
 }

@@ -54,19 +54,19 @@ class Order: Identifiable, Hashable, Equatable {
 extension Order {
     static var test: Order {
         return Order(
-            code: "FFA534", orderlineId: UUID(), styleNumber: "AW23D001", contractualPartner: ContractualPartner(id: UUID(), registrationNr: 45, name: "WeaveLink"), brand: Brand(id: UUID(), registrationNr: 32, name: "H&M")
+            code: "FFA534", orderlineId: UUID(), styleNumber: "AW23D001", contractualPartner: ContractualPartner(id: UUID(), registrationNr: 45, name: "FashionLead"), brand: Brand(id: UUID(), registrationNr: 32, name: "H&M")
         )
     }
     
     static var test2: Order {
         return Order(
-            code: "FFA535", orderlineId: UUID(), styleNumber: "AW23D001", contractualPartner: ContractualPartner(id: UUID(), registrationNr: 45, name: "WeaveLink"), brand: Brand(id: UUID(), registrationNr: 32, name: "H&M")
+            code: "FFA533", orderlineId: UUID(), styleNumber: "AW23D002", contractualPartner: ContractualPartner(id: UUID(), registrationNr: 45, name: "FashionLead"), brand: Brand(id: UUID(), registrationNr: 32, name: "H&M")
         )
     }
     
     static var test3: Order {
         return Order(
-            code: "FFA536", orderlineId: UUID(), styleNumber: "AW23D002", contractualPartner: ContractualPartner(id: UUID(), registrationNr: 45, name: "WeaveLink"), brand: Brand(id: UUID(), registrationNr: 32, name: "H&M")
+            code: "FFA532", orderlineId: UUID(), styleNumber: "AW23D002", contractualPartner: ContractualPartner(id: UUID(), registrationNr: 45, name: "FashionLead"), brand: Brand(id: UUID(), registrationNr: 32, name: "H&M")
         )
     }
 }

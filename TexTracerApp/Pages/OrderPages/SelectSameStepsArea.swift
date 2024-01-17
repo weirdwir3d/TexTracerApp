@@ -4,13 +4,21 @@ struct SelectSameStepsArea: View {
     
     @EnvironmentObject var selectedDataStore: SelectedDataStore
     @State private var toggledSteps: [String] = []
+
     @Binding var currentArea: Int
     
     var body: some View {
         
+        var orderSteps = selectedDataStore.getSelectedSteps()
+        
         ScrollView {
+            
+            Text("Steps selected:")
+            ForEach(orderSteps) { orderStep in
+                Text(orderStep.step.stringValue)
+            }
+            
             Text("What steps share the same order evidence?")
-            var orderSteps = selectedDataStore.getSelectedSteps()
             ForEach(orderSteps) { orderStep in
                 StepSwitch(
                     text: orderStep.step.stringValue,
@@ -30,15 +38,25 @@ struct SelectSameStepsArea: View {
             }
             
             CustomFullButton(action: {
-                print("Selected order Steps: \(selectedDataStore.getSelectedSteps())")
+                for orderStep in orderSteps {
+                    if toggledSteps.contains(orderStep.step.stringValue) {
+                        selectedDataStore.addSameEvidenceStep(orderStep)
+                    }
+                }
+                print("same evidence steps: \(selectedDataStore.getAllSameEvidenceSteps())")
+                
                 currentArea = 3
             }) {
-                Text("Select orders")
+                Text("Next")
             }
             .buttonStyle(PlainButtonStyle())
             
-            CustomUnderlinedText(text: "Back to select steps") {
+            CustomEmptyButton(action: {
+                currentArea = 1
+            }) {
+                Text("Back to Select steps")
             }
+            .buttonStyle(PlainButtonStyle())
             
         }
         

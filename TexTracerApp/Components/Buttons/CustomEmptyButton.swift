@@ -5,7 +5,7 @@ import SwiftUI
 struct CustomEmptyButton: View {
     let action: () -> Void
     let label: () -> Text
-
+    
     var body: some View {
         Button(action: action) {
             label()
@@ -15,11 +15,11 @@ struct CustomEmptyButton: View {
                 .foregroundColor(Color.accentColor)
                 .cornerRadius(30)
                 .overlay(
-                                    RoundedRectangle(cornerRadius: 30)
-                                        .stroke(Color.accentColor, lineWidth: 1) // Adjust the border width as needed
-                                )
+                    RoundedRectangle(cornerRadius: 30)
+                        .stroke(Color.accentColor, lineWidth: 1)
+                )
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 

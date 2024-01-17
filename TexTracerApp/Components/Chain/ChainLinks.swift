@@ -33,11 +33,6 @@ struct ChainLinks: View {
     }
 }
 
-
-
-
-
-
 //#Preview {
 //    
 //    @State var selectedOrderSteps: [OrderStep] = []

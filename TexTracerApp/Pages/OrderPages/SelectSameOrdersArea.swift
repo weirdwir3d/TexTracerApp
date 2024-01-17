@@ -5,7 +5,7 @@ struct SelectSameOrdersArea: View {
     @EnvironmentObject var selectedDataStore: SelectedDataStore
     @Binding var currentArea: Int
     @State private var markedOrders: Set<String> = Set()
-    @State private var orders: [Order] = []  // Store the initial list of orders
+    @State private var orders: [Order] = []
     
     var body: some View {
         
@@ -53,19 +53,27 @@ struct SelectSameOrdersArea: View {
                     Divider()
                 }
                 
-            }
-            
+            }.padding()
             
             CustomFullButton(action: {
-                print("Selected order Steps: \(selectedDataStore.getSelectedSteps())")
-                currentArea = 3
+                for order in orders {
+                    if markedOrders.contains(order.code) {
+                        selectedDataStore.addSelectedOrder(order)
+                    }
+                }
+                selectedDataStore.alignSelectedStepsOrder()
+                //TODO: navigate to another page
+                print("All Steps: \(selectedDataStore.getAllOrderSteps())")
+                print("Selected Steps: \(selectedDataStore.getSelectedSteps())")
+                print("All orders: \(selectedDataStore.getOrders())")
+                print("Selected orders: \(selectedDataStore.getSelectedOrders())")
+                print("Steps with same evidence: \(selectedDataStore.getAllSameEvidenceSteps())")
             }) {
                 Text("Start uploading evidence")
             }
             .buttonStyle(PlainButtonStyle())
             
             CustomEmptyButton(action: {
-                print("Selected order Steps: \(selectedDataStore.getSelectedSteps())")
                 currentArea = 2
             }) {
                 Text("Back to Select steps with same evidence")

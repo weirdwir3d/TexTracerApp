@@ -17,18 +17,12 @@ struct SelectStepsArea: View {
                 .environmentObject(selectedDataStore)
             
             CustomFullButton(action: {
-                print("Selected order Steps: \(selectedDataStore.getSelectedSteps())")
                 currentArea = 2
             }) {
                 Text("Next")
             }
             .buttonStyle(PlainButtonStyle())
             
-            Spacer().frame(height: 20)
-            
-            CustomUnderlinedText(text: "Back to all orders") {
-                presentationMode.wrappedValue.dismiss()
-            }
         }
         
     }

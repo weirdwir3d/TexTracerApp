@@ -19,15 +19,63 @@ class SelectedDataStore: ObservableObject {
     @Published var orders: [Order] = []
     //list of orders the user selected to upload evidence for
     @Published var selectedOrders: [Order] = []
+    //makes it easier to keep track of what steps share the same order evidence (true) and which ones dont (false)
+    @Published var listBooleanSteps: [OrderStep: Bool] = [:]
+    
+    // steps to create progress bar
+    @Published var stepsProgressBar: [OrderStep] = []
+    @Published var doneStepsProgressBar: [OrderStep] = []
+    // keeps track of what stepsProgressBar share the same evidence (true) and whicon ones dont (false)
+    @Published var stepsIsSameEvidence: [Bool] = []
     
     
+    func getDoneStepsProgressBar() -> [OrderStep] {
+        return doneStepsProgressBar
+    }
+    
+    func addStepToDoneStepsProgressBar(_ step: OrderStep) {
+        doneStepsProgressBar.append(step)
+    }
+    
+    func getStepsIsSameEvidence() -> [Bool] {
+        return stepsIsSameEvidence
+    }
+    
+    func addStepsIsSameEvidence(_ boolVal: Bool) {
+        stepsIsSameEvidence.append(boolVal)
+    }
+    
+    func addStepToProgressBar(_ step: OrderStep) {
+        stepsProgressBar.append(step)
+    }
+    
+    //get list of steps for the progress bar
+    func getStepsProgressBar() -> [OrderStep] {
+        return stepsProgressBar
+    }
+    
+    func getListBooleanSteps() -> [OrderStep: Bool] {
+        return listBooleanSteps
+    }
+
+    func createListBooleanSteps() {
+        for step in selectedSteps {
+            if stepsWithSharedPicture.contains(step) {
+                listBooleanSteps[step] = true
+            } else {
+                listBooleanSteps[step] = false
+            }
+        }
+//        print("SELECTED STEPS LIST: \(getSelectedSteps())")
+//        print("CREATED LIST: \(getListBooleanSteps())")
+    }
     
     func alignSelectedStepsOrder() {
         selectedSteps = allOrderSteps.compactMap { step in
             selectedSteps.first { $0 == step }
         }
         stepsWithSharedPicture = selectedSteps.compactMap { step in
-            selectedSteps.first { $0 == step }
+            stepsWithSharedPicture.first { $0 == step }
         }
     }
     

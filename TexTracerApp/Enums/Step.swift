@@ -1,6 +1,6 @@
 import Foundation
 
-enum Step {
+enum Step: CaseIterable {
     case Trims
     case Spinning
     case Ginning
@@ -14,7 +14,22 @@ enum Step {
     case Harvesting
 }
 
-extension Step {
+extension Step: Collection {
+    
+    typealias Index = Int
+        typealias Element = Step
+    
+    var startIndex: Index { return 0 }
+        var endIndex: Index { return Step.allCases.count }
+
+        subscript(position: Index) -> Element {
+            return Step.allCases[position]
+        }
+
+        func index(after i: Index) -> Index {
+            return i + 1
+        }
+    
     var stringValue: String {
         switch self {
         case .Ginning:

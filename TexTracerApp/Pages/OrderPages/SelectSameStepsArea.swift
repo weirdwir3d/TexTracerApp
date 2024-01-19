@@ -27,10 +27,10 @@ struct SelectSameStepsArea: View {
                         set: { newValue in
                             if newValue && !toggledSteps.contains(orderStep.step.stringValue) {
                                 toggledSteps.append(orderStep.step.stringValue)
-                                print("Step \(orderStep.step.stringValue) added. Toggled steps: \(toggledSteps)")
+//                                print("Step \(orderStep.step.stringValue) added. Toggled steps: \(toggledSteps)")
                             } else if !newValue {
                                 toggledSteps.removeAll { $0 == orderStep.step.stringValue }
-                                print("Step \(orderStep.step.stringValue) removed. Toggled steps: \(toggledSteps)")
+//                                print("Step \(orderStep.step.stringValue) removed. Toggled steps: \(toggledSteps)")
                             }
                         }
                     ), onToggle: {}
@@ -43,7 +43,8 @@ struct SelectSameStepsArea: View {
                         selectedDataStore.addSameEvidenceStep(orderStep)
                     }
                 }
-                print("same evidence steps: \(selectedDataStore.getAllSameEvidenceSteps())")
+//                print("same evidence steps: \(selectedDataStore.getAllSameEvidenceSteps())")
+//                print("Steps with same evidence: \(selectedDataStore.getAllSameEvidenceSteps())")
                 
                 currentArea = 3
             }) {

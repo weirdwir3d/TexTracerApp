@@ -17,6 +17,7 @@
 		C86204342B4C4505003B5BA9 /* CustomPreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86204332B4C4505003B5BA9 /* CustomPreviewProvider.swift */; };
 		C8833BA72B51D70400D773AC /* CustomEmptyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8833BA62B51D70400D773AC /* CustomEmptyButton.swift */; };
 		C8833BAA2B51DAE400D773AC /* CustomUnderlinedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8833BA92B51DAE400D773AC /* CustomUnderlinedText.swift */; };
+		C886EDB52B5895E5001D0B08 /* UploadEvidencePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886EDB42B5895E5001D0B08 /* UploadEvidencePage.swift */; };
 		C89390F12B51527200888446 /* OneChainLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89390F02B51527200888446 /* OneChainLink.swift */; };
 		C89390F32B5157E800888446 /* LastChainLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89390F22B5157E800888446 /* LastChainLink.swift */; };
 		C8B851832B1A336300FE593C /* TexTracerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B851822B1A336300FE593C /* TexTracerAppApp.swift */; };
@@ -87,6 +88,7 @@
 		C86204332B4C4505003B5BA9 /* CustomPreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPreviewProvider.swift; sourceTree = "<group>"; };
 		C8833BA62B51D70400D773AC /* CustomEmptyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEmptyButton.swift; sourceTree = "<group>"; };
 		C8833BA92B51DAE400D773AC /* CustomUnderlinedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUnderlinedText.swift; sourceTree = "<group>"; };
+		C886EDB42B5895E5001D0B08 /* UploadEvidencePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadEvidencePage.swift; sourceTree = "<group>"; };
 		C89390F02B51527200888446 /* OneChainLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneChainLink.swift; sourceTree = "<group>"; };
 		C89390F22B5157E800888446 /* LastChainLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastChainLink.swift; sourceTree = "<group>"; };
 		C8B8517F2B1A336300FE593C /* TexTracerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TexTracerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 				C83C3B0F2B57FA1C00CAD385 /* SelectStepsArea.swift */,
 				C83C3B112B57FEBE00CAD385 /* SelectSameStepsArea.swift */,
 				C83C3B132B580F9200CAD385 /* SelectSameOrdersArea.swift */,
+				C886EDB42B5895E5001D0B08 /* UploadEvidencePage.swift */,
 			);
 			path = OrderPages;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				C8E2542C2B27D65B00274FC4 /* MyAccountPage.swift in Sources */,
 				C8B851832B1A336300FE593C /* TexTracerAppApp.swift in Sources */,
 				C8F66DC82B1B7A030011D89D /* ContractualPartner.swift in Sources */,
+				C886EDB52B5895E5001D0B08 /* UploadEvidencePage.swift in Sources */,
 				C8E2542F2B28F35500274FC4 /* Color.swift in Sources */,
 				C8F66DCA2B1B7FA40011D89D /* Orderline.swift in Sources */,
 				C86051BC2B4EEE320047ADD4 /* ReviewEvidenceTask.swift in Sources */,

@@ -6,6 +6,7 @@ struct SelectSameOrdersArea: View {
     @Binding var currentArea: Int
     @State private var markedOrders: Set<String> = Set()
     @State private var orders: [Order] = []
+    @State private var isNavigationActive = false
     
     var body: some View {
         
@@ -25,7 +26,7 @@ struct SelectSameOrdersArea: View {
                         } else {
                             markedOrders.removeAll()
                         }
-                        print("Selected Orders: \(markedOrders)")
+//                        print("Selected Orders: \(markedOrders)")
                     }
                 )) {
                     Text("Select All")
@@ -41,7 +42,7 @@ struct SelectSameOrdersArea: View {
                             } else {
                                 markedOrders.remove(order.code)
                             }
-                            print("Selected Orders: \(markedOrders)")
+//                            print("Selected Orders: \(markedOrders)")
                         }
                     )) {
                         HStack(spacing: 90) {
@@ -61,17 +62,52 @@ struct SelectSameOrdersArea: View {
                         selectedDataStore.addSelectedOrder(order)
                     }
                 }
+//                print("Steps with same evidence before aligning: \(selectedDataStore.getAllSameEvidenceSteps())")
                 selectedDataStore.alignSelectedStepsOrder()
-                //TODO: navigate to another page
-                print("All Steps: \(selectedDataStore.getAllOrderSteps())")
-                print("Selected Steps: \(selectedDataStore.getSelectedSteps())")
-                print("All orders: \(selectedDataStore.getOrders())")
-                print("Selected orders: \(selectedDataStore.getSelectedOrders())")
-                print("Steps with same evidence: \(selectedDataStore.getAllSameEvidenceSteps())")
+                
+                let filteredSteps = selectedDataStore.getSelectedSteps()
+                    .filter { orderStep in markedOrders.contains(orderStep.step.stringValue) }
+
+
+                    for orderStep in filteredSteps {
+                        selectedDataStore.addSameEvidenceStep(orderStep)
+                    }
+                
+//                print("All Steps: \(selectedDataStore.getAllOrderSteps())")
+//                print("Selected Steps: \(selectedDataStore.getSelectedSteps())")
+//                print("All orders: \(selectedDataStore.getOrders())")
+//                print("Selected orders: \(selectedDataStore.getSelectedOrders())")
+//                print("Steps with same evidence: \(selectedDataStore.getAllSameEvidenceSteps())")
+                
+                // generate StepsProgressBar that will show up in the next page
+                selectedDataStore.createListBooleanSteps()
+                let booleanStepsDictionary = selectedDataStore.getListBooleanSteps()
+                
+//                print("----------------------------------")
+//                booleanStepsDictionary.forEach { (step, boolValue) in
+//                    print("Step: \(step), Bool Value: \(boolValue)")
+//                }
+                
+                let orderedSteps = selectedDataStore.getSelectedSteps()
+                orderedSteps.forEach { step in
+                    if let boolValue = booleanStepsDictionary[step] {
+                        selectedDataStore.addStepToProgressBar(step)
+                        selectedDataStore.addStepsIsSameEvidence(boolValue)
+                    } else {
+                        print("\(step) not found in booleanStepsDictionary")
+                    }
+                }
+//                print("SelectSameOrdersArea: selectedDataStore.getStepsIsSameEvidence().first: \(selectedDataStore.getStepsIsSameEvidence().first)")
+                
+                //navigate to next page
+                isNavigationActive = true
             }) {
                 Text("Start uploading evidence")
             }
             .buttonStyle(PlainButtonStyle())
+            
+            // NavigationLink to the next page
+            NavigationLink("", destination: UploadEvidencePage().environmentObject(selectedDataStore), isActive: $isNavigationActive)
             
             CustomEmptyButton(action: {
                 currentArea = 2

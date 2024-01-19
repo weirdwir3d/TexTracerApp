@@ -3,33 +3,37 @@ import SwiftUI
 struct OrderDetailsPage: View {
     
     let task: UploadEvidenceTask
-    @StateObject var selectedDataStore = SelectedDataStore()
+    @StateObject var selectedDataStore = DataStore()
     @Environment(\.presentationMode) var presentationMode
     @State var currentArea = 1
     
     let orders = [Order.test, Order.test2, Order.test3]
     
     var body: some View {
-        VStack {
-            Group {
-                if currentArea == 1 {
-                    SelectStepsArea(task: task, currentArea: $currentArea)
-                } else if currentArea == 2 {
-                    SelectSameStepsArea(currentArea: $currentArea)
-                } else if currentArea == 3 {
-                    SelectSameOrdersArea(currentArea: $currentArea)
+        NavigationView {
+            VStack {
+                Group {
+                    if currentArea == 1 {
+                        SelectStepsArea(task: task, currentArea: $currentArea)
+                    } else if currentArea == 2 {
+                        SelectSameStepsArea(currentArea: $currentArea)
+                    } else if currentArea == 3 {
+                        SelectSameOrdersArea(currentArea: $currentArea)
+                    }
                 }
+                .environmentObject(selectedDataStore)
             }
-            .environmentObject(selectedDataStore)
+            .onAppear {
+                selectedDataStore.addCurrentTask(task)
+                // Add the order steps to the SelectedDataStore when the view appears
+                selectedDataStore.addAllOrderSteps(task.orderSteps)
+                // add test orders
+                selectedDataStore.addOrders(orders)
+    //            print("All Order Steps in selectedDataStore: \(selectedDataStore.getAllOrderSteps())")
+            }
         }
-        .onAppear {
-            selectedDataStore.addTask(task)
-            // Add the order steps to the SelectedDataStore when the view appears
-            selectedDataStore.addAllOrderSteps(task.orderSteps)
-            //TODO: add test orders
-            selectedDataStore.addOrders(orders)
-//            print("All Order Steps in selectedDataStore: \(selectedDataStore.getAllOrderSteps())")
-        }
+        .navigationBarTitle("Order details", displayMode: .inline)
+        
     }
 }
 

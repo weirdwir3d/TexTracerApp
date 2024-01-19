@@ -4,7 +4,7 @@ struct OneChainLink: View {
     
     var orderStep: OrderStep
     
-    @EnvironmentObject var selectedDataStore: SelectedDataStore
+    @EnvironmentObject var selectedDataStore: DataStore
     @State var isSelected: Bool = false
     @State private var fillColor = Color.theme.violetUltraLightColor
     @State private var symbol = "circle.fill"
@@ -24,11 +24,11 @@ struct OneChainLink: View {
                 if isSelected {
                     selectedDataStore.addSelectedStep(orderStep)
                     
-                    print("all selected steps: \(selectedDataStore.getSelectedSteps())")
+//                    print("all selected steps: \(selectedDataStore.getSelectedSteps())")
                 } else {
                     selectedDataStore.removeSelectedStep(orderStep)
                     
-                    print("all selected steps: \(selectedDataStore.getSelectedSteps())")
+//                    print("all selected steps: \(selectedDataStore.getSelectedSteps())")
                 }
             }
     }

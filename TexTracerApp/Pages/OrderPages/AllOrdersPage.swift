@@ -47,10 +47,6 @@ struct AllOrdersPage: View {
 
                 }
             }
-            .onAppear {
-                // Set the navigation bar title directly
-                UINavigationBar.appearance().topItem?.title = "All orders"
-            }
             .background(Color(.systemBackground))
             .navigationBarTitle("All orders", displayMode: .inline)
             .navigationBarItems(trailing:

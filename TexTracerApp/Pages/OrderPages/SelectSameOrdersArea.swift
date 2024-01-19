@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SelectSameOrdersArea: View {
     
-    @EnvironmentObject var selectedDataStore: SelectedDataStore
+    @EnvironmentObject var selectedDataStore: DataStore
     @Binding var currentArea: Int
     @State private var markedOrders: Set<String> = Set()
     @State private var orders: [Order] = []
@@ -128,5 +128,5 @@ struct SelectSameOrdersArea: View {
 
 #Preview {
     SelectSameOrdersArea(currentArea: .constant(3))
-        .environmentObject(SelectedDataStore())
+        .environmentObject(DataStore())
 }

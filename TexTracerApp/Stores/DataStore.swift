@@ -3,10 +3,10 @@ import Foundation
 import Combine
 
 //keeps track of what the user chooses to upload order evidence for
-class SelectedDataStore: ObservableObject {
+class DataStore: ObservableObject {
     
     //current task
-    @Published var task: UploadEvidenceTask?
+    @Published var currentTask: UploadEvidenceTask?
     //all steps of an order
     @Published var allOrderSteps: [OrderStep] = []
     //all steps the user chose to upload order evidence for
@@ -87,8 +87,12 @@ class SelectedDataStore: ObservableObject {
         return stepsWithSharedPicture.first { $0.step.stringValue == step }
     }
     
-    func addTask(_ taskToAdd: UploadEvidenceTask) {
-        task = taskToAdd
+    func getCurrentTask() -> Task {
+        return currentTask!
+    }
+    
+    func addCurrentTask(_ taskToAdd: UploadEvidenceTask) {
+        currentTask = taskToAdd
     }
     
     //add step with same order evidence as at least another step

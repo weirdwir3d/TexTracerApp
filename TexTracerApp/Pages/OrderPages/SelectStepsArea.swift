@@ -3,7 +3,7 @@ import SwiftUI
 struct SelectStepsArea: View {
     
     let task: UploadEvidenceTask
-    @EnvironmentObject var selectedDataStore: SelectedDataStore
+    @EnvironmentObject var selectedDataStore: DataStore
     @Environment(\.presentationMode) var presentationMode
     @Binding var currentArea: Int
 
@@ -37,5 +37,5 @@ struct SelectStepsArea: View {
                         ),
                     currentArea: .constant(1)
     )
-    .environmentObject(SelectedDataStore())
+    .environmentObject(DataStore())
 }

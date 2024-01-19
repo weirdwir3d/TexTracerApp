@@ -2,7 +2,7 @@ import SwiftUI
 
 struct StepsProgressBar: View {
     
-    @EnvironmentObject var selectedDataStore: SelectedDataStore
+    @EnvironmentObject var selectedDataStore: DataStore
     var steps: [OrderStep]
     var stepsIsSameEvidence: [Bool]
     //    @State var completedSteps: [OrderStep] = []
@@ -58,20 +58,32 @@ struct StepsProgressBar: View {
                 }
                     .compactMap { $0 }
                 
-                ForEach(viewsToDisplay, id: \.self) { viewItem in
-                    viewItem.view
-                        .id(viewItem.text) // Use text as an identifier
+                ForEach(0..<viewsToDisplay.count - 1) { index in
+                    HStack {
+                        viewsToDisplay[index].view
+                            .id(viewsToDisplay[index].text)
+                        
+                        Rectangle()
+                            .frame(width: 50, height: 4)
+                            .foregroundColor(Color.theme.violetLightColor)
+                        
+                    }
                 }
+                
+                if let lastView = viewsToDisplay.last {
+                    lastView.view
+                        .id(lastView.text)
+                }
+                
                 
             }
             .onAppear {
                 var boolList = selectedDataStore.getStepsIsSameEvidence()
                 for bool in boolList {
-                    print("selectedDataStore.getStepsIsSameEvidence(): \(bool)")
+//                    print("selectedDataStore.getStepsIsSameEvidence(): \(bool)")
                 }
                 
             }
-
         
         HStack(spacing: 40) {
             ForEach(steps) { orderStep in
@@ -80,11 +92,6 @@ struct StepsProgressBar: View {
             }
         }
     }
-    
-    //    func addStep(_ step: OrderStep, _ isSharedEvidence: Bool) {
-    //        steps.append(step)
-    //        stepsIsSameEvidence.append(isSharedEvidence)
-    //    }
     
     @ViewBuilder
     func greenCircle() -> some View {
@@ -145,5 +152,5 @@ struct StepsProgressBar: View {
     ], stepsIsSameEvidence: [
         true, true, false, false
     ]
-    ).environmentObject(SelectedDataStore())
+    ).environmentObject(DataStore())
 }

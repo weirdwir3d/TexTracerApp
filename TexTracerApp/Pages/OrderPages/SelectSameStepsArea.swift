@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SelectSameStepsArea: View {
     
-    @EnvironmentObject var selectedDataStore: SelectedDataStore
+    @EnvironmentObject var selectedDataStore: DataStore
     @State private var toggledSteps: [String] = []
 
     @Binding var currentArea: Int
@@ -66,5 +66,5 @@ struct SelectSameStepsArea: View {
 
 #Preview {
     SelectSameStepsArea(currentArea: .constant(2))
-        .environmentObject(SelectedDataStore())
+        .environmentObject(DataStore())
 }

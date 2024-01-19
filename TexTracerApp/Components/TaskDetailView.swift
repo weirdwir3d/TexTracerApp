@@ -8,7 +8,7 @@ struct TaskDetailView: View {
     
     
     @EnvironmentObject var tasksStore: TasksStore
-    @EnvironmentObject var selectedDataStore: SelectedDataStore
+    @EnvironmentObject var selectedDataStore: DataStore
     
     let task: Task
     let orders = [

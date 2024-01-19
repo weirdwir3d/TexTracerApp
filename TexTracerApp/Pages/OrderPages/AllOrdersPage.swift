@@ -6,7 +6,8 @@ struct AllOrdersPage: View {
     @EnvironmentObject var tasksStore: TasksStore
     @State private var searchText = ""
     @State private var selectedCategory = 0 // Start with Review
-    
+    @State private var selectedTask: Task? = nil
+
     var filteredTasks: [Task] {
         switch selectedCategory {
         case 0:
@@ -43,10 +44,11 @@ struct AllOrdersPage: View {
                             }
                         }
                     }
+
                 }
             }
             .background(Color(.systemBackground))
-            .navigationBarTitle("Order evidence", displayMode: .inline)
+            .navigationBarTitle("All orders", displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
                     // Handle the action when the filters button is tapped
@@ -58,8 +60,6 @@ struct AllOrdersPage: View {
         .background(Color(.systemBackground))
     }
 }
-
-
 
 
 

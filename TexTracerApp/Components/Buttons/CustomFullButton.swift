@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CustomButton: View {
+struct CustomFullButton: View {
     let action: () -> Void
     let label: () -> Text
 
@@ -13,15 +13,12 @@ struct CustomButton: View {
                 .foregroundColor(.white)
                 .cornerRadius(30)
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 
 #Preview {
-    CustomButton(action: {}) {
+    CustomFullButton(action: {}) {
         Text("Upload evidence")
     }
 }
-
-
-

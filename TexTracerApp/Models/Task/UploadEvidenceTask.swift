@@ -48,5 +48,17 @@ class UploadEvidenceTask: Task {
             return "Upload evidence for an unspecified order for \(stepStrings.joined(separator: ", "))"
         }
     }
+    
+    override func toString() -> String {
+            var result = super.toString() // Call the toString method of the superclass
+            result += "\nAssigner ID: \(assignerId)\n"
+            result += "Assignee ID: \(assigneeId)\n"
+            result += "Order Steps:\n"
+            for step in orderSteps {
+                result += "- \(step.step.stringValue)\n"
+            }
+            return result
+        }
+    
 }
 

@@ -61,16 +61,6 @@ struct AllOrdersPage: View {
     }
 }
 
-
-
-#Preview {
-    NavigationView{
-        AllOrdersPage()
-            .environmentObject(TasksStore.test)
-    }
-}
-
-
 struct SearchBar: View {
     @Binding var searchText: String
     
@@ -87,5 +77,9 @@ struct SearchBar: View {
     }
 }
 
-
-
+#Preview {
+    NavigationView{
+        AllOrdersPage()
+            .environmentObject(TasksStore.test)
+    }
+}

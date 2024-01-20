@@ -99,7 +99,7 @@ struct SelectSameOrdersArea: View {
                 }
 //                print("SelectSameOrdersArea: selectedDataStore.getStepsIsSameEvidence().first: \(selectedDataStore.getStepsIsSameEvidence().first)")
                 var steps = dataStore.getSelectedSteps()
-                print("all (selected) steps after SelectSameOrdersPage: \(steps)")
+//                print("all (selected) steps after SelectSameOrdersPage: \(steps)")
                 
                 //navigate to next page
                 isNavigationActive = true

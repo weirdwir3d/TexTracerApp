@@ -6,8 +6,8 @@ struct UploadEvidencePage: View {
     @State private var steps: [OrderStep] = []
     @State private var visibleAreas: [UploadEvidenceArea] = []
     @State private var currentAreaIndex: Int = 0
-    
-    var isNextButtonDisabled: Bool {
+
+    var isSelectedPicture: Bool {
             guard currentAreaIndex < visibleAreas.count else {
                 return true
             }
@@ -17,19 +17,28 @@ struct UploadEvidencePage: View {
     
     var body: some View {
         VStack {
+            
             // Display the current UploadEvidenceArea
             if visibleAreas.indices.contains(currentAreaIndex) {
+                visibleAreas[currentAreaIndex] = UploadEvidenceArea(index: currentAreaIndex)
                 visibleAreas[currentAreaIndex].environmentObject(dataStore)
             }
             
-                
                 CustomFullButton(action: {
+                    // save selectedPicture to array in dataStore and reset selectedPicture value so that it can be used for the next area
+                    dataStore.saveSelectedImage()
+                    let currentSteps = dataStore.getCurrentSteps()
+                    dataStore.addStepsToDoneStepsProgressBar(currentSteps)
+                    dataStore.resetSelectedImage()
+                    
                     navigateToNextArea()
+                    
+                    
                 }) {
                     Text("Next")
                 }
                 .buttonStyle(PlainButtonStyle())
-                .disabled(currentAreaIndex == visibleAreas.count - 1 || isNextButtonDisabled)
+                .disabled(currentAreaIndex == visibleAreas.count - 1 || isSelectedPicture)
 
                 
                 CustomEmptyButton(action: {
@@ -84,6 +93,8 @@ struct UploadEvidencePage: View {
         }
     }
 }
+
+
 
 #Preview {
     UploadEvidencePage()

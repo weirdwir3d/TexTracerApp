@@ -17,8 +17,8 @@ struct UploadEvidenceArea: View {
     }
     
     var body: some View {
-        StepsProgressBar(steps: dataStore.getStepsProgressBar(), stepsIsSameEvidence: dataStore.getStepsIsSameEvidence())
-            .environmentObject(dataStore)
+//        StepsProgressBar(steps: dataStore.getStepsProgressBar())
+//            .environmentObject(dataStore)
         
         Spacer().frame(height: 50)
         

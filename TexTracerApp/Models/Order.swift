@@ -44,6 +44,51 @@ class Order: Identifiable, Hashable, Equatable {
         orderSteps.append(contentsOf: steps)
     }
     
+    // Getter method for code
+        func getCode() -> String {
+            return code
+        }
+
+        // Getter method for orderlineId
+        func getOrderlineId() -> UUID {
+            return orderlineId
+        }
+
+        // Getter method for styleNumber
+        func getStyleNumber() -> String {
+            return styleNumber
+        }
+
+        // Getter method for contractualPartner
+        func getContractualPartner() -> ContractualPartner {
+            return contractualPartner
+        }
+
+        // Getter method for brand
+        func getBrand() -> Brand {
+            return brand
+        }
+
+        // Getter method for isComplete
+        func getIsComplete() -> Bool {
+            return isComplete
+        }
+
+        // Getter method for orderSteps
+        func getOrderSteps() -> [OrderStep] {
+            return orderSteps
+        }
+
+        // Getter method for tasks
+        func getTasks() -> Task? {
+            return tasks
+        }
+
+        // Getter method for finalClientId
+        func getFinalClientId() -> Int? {
+            return finalClientId
+        }
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(code)
         hasher.combine(orderlineId)

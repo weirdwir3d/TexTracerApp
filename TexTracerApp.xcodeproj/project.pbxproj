@@ -21,6 +21,9 @@
 		C89390F12B51527200888446 /* OneChainLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89390F02B51527200888446 /* OneChainLink.swift */; };
 		C89390F32B5157E800888446 /* LastChainLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89390F22B5157E800888446 /* LastChainLink.swift */; };
 		C8A8F6FF2B5A9701009157BF /* UploadEvidenceArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F6FE2B5A9701009157BF /* UploadEvidenceArea.swift */; };
+		C8A8F7022B5B28CE009157BF /* UploadPictureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F7012B5B28CE009157BF /* UploadPictureButton.swift */; };
+		C8A8F7042B5B29C0009157BF /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F7032B5B29C0009157BF /* ImagePickerView.swift */; };
+		C8A8F7062B5B2E63009157BF /* ImageBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F7052B5B2E63009157BF /* ImageBoxView.swift */; };
 		C8B851832B1A336300FE593C /* TexTracerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B851822B1A336300FE593C /* TexTracerAppApp.swift */; };
 		C8B851852B1A336300FE593C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B851842B1A336300FE593C /* ContentView.swift */; };
 		C8B851872B1A336600FE593C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B851862B1A336600FE593C /* Assets.xcassets */; };
@@ -93,6 +96,9 @@
 		C89390F02B51527200888446 /* OneChainLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneChainLink.swift; sourceTree = "<group>"; };
 		C89390F22B5157E800888446 /* LastChainLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastChainLink.swift; sourceTree = "<group>"; };
 		C8A8F6FE2B5A9701009157BF /* UploadEvidenceArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadEvidenceArea.swift; sourceTree = "<group>"; };
+		C8A8F7012B5B28CE009157BF /* UploadPictureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPictureButton.swift; sourceTree = "<group>"; };
+		C8A8F7032B5B29C0009157BF /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		C8A8F7052B5B2E63009157BF /* ImageBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBoxView.swift; sourceTree = "<group>"; };
 		C8B8517F2B1A336300FE593C /* TexTracerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TexTracerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B851822B1A336300FE593C /* TexTracerAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexTracerAppApp.swift; sourceTree = "<group>"; };
 		C8B851842B1A336300FE593C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -195,6 +201,15 @@
 			path = Chain;
 			sourceTree = "<group>";
 		};
+		C8A8F7002B5B2893009157BF /* EvidencePictureArea */ = {
+			isa = PBXGroup;
+			children = (
+				C8A8F7012B5B28CE009157BF /* UploadPictureButton.swift */,
+				C8A8F7052B5B2E63009157BF /* ImageBoxView.swift */,
+			);
+			path = EvidencePictureArea;
+			sourceTree = "<group>";
+		};
 		C8B851762B1A336300FE593C = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +305,7 @@
 		C8E254322B28F7B200274FC4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C8A8F7002B5B2893009157BF /* EvidencePictureArea */,
 				C8833BAB2B51DD3100D773AC /* Chain */,
 				C8833BA82B51D71E00D773AC /* Buttons */,
 				C8E254332B28F7C900274FC4 /* TaskView.swift */,
@@ -303,6 +319,7 @@
 				C8C500652B2E101A00B36674 /* StepsProgressBar.swift */,
 				C86051BF2B4F08560047ADD4 /* OrderDetailsArea.swift */,
 				C8833BA92B51DAE400D773AC /* CustomUnderlinedText.swift */,
+				C8A8F7032B5B29C0009157BF /* ImagePickerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -500,11 +517,13 @@
 				C8E2543A2B29037000274FC4 /* WhiteBox.swift in Sources */,
 				C89390F32B5157E800888446 /* LastChainLink.swift in Sources */,
 				C8F66DD12B1B8AAA0011D89D /* Order.swift in Sources */,
+				C8A8F7062B5B2E63009157BF /* ImageBoxView.swift in Sources */,
 				C8ECFF472B2A22D600D667F2 /* ChainLinks.swift in Sources */,
 				C8F66DC42B1B75590011D89D /* Facility.swift in Sources */,
 				C8ECFF452B2A1C5D00D667F2 /* Chain.swift in Sources */,
 				C8E2542C2B27D65B00274FC4 /* MyAccountPage.swift in Sources */,
 				C8B851832B1A336300FE593C /* TexTracerAppApp.swift in Sources */,
+				C8A8F7042B5B29C0009157BF /* ImagePickerView.swift in Sources */,
 				C8F66DC82B1B7A030011D89D /* ContractualPartner.swift in Sources */,
 				C886EDB52B5895E5001D0B08 /* UploadEvidencePage.swift in Sources */,
 				C8E2542F2B28F35500274FC4 /* Color.swift in Sources */,
@@ -513,6 +532,7 @@
 				C86051C22B4F58090047ADD4 /* DataStore.swift in Sources */,
 				C8E254362B28FD2F00274FC4 /* TaskDetailView.swift in Sources */,
 				C83C3B122B57FEBE00CAD385 /* SelectSameStepsArea.swift in Sources */,
+				C8A8F7022B5B28CE009157BF /* UploadPictureButton.swift in Sources */,
 				C8C500662B2E101A00B36674 /* StepsProgressBar.swift in Sources */,
 				C81AD6592B5149F0007494FE /* OrderDetailsPage.swift in Sources */,
 				C8A8F6FF2B5A9701009157BF /* UploadEvidenceArea.swift in Sources */,

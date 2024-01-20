@@ -27,7 +27,22 @@ class DataStore: ObservableObject {
     @Published var doneStepsProgressBar: [OrderStep] = []
     // keeps track of what stepsProgressBar share the same evidence (true) and whicon ones dont (false)
     @Published var stepsIsSameEvidence: [Bool] = []
+    @Published var currentSteps: [OrderStep] = []
     
+    
+    func getCurrentSteps() -> [OrderStep] {
+        return currentSteps
+    }
+
+    func addStepToCurrentSteps(_ stepToAdd: OrderStep) {
+        if !currentSteps.contains(stepToAdd) {
+            currentSteps.append(stepToAdd)
+        }
+    }
+
+    func clearCurrentSteps() {
+        currentSteps.removeAll()
+    }
     
     func getDoneStepsProgressBar() -> [OrderStep] {
         return doneStepsProgressBar

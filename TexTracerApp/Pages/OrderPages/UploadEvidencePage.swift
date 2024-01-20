@@ -14,7 +14,6 @@ struct UploadEvidencePage: View {
                 visibleAreas[currentAreaIndex].environmentObject(dataStore)
             }
             
-            // Buttons to navigate between areas
                 
                 CustomFullButton(action: {
                     navigateToNextArea()
@@ -27,7 +26,7 @@ struct UploadEvidencePage: View {
                 CustomEmptyButton(action: {
                     navigateToPreviousArea()
                 }) {
-                    Text("Back")
+                    Text("Previous")
                 }
                 .buttonStyle(PlainButtonStyle())
                 .disabled(currentAreaIndex == 0)
@@ -76,8 +75,6 @@ struct UploadEvidencePage: View {
         }
     }
 }
-
-
 
 #Preview {
     UploadEvidencePage()

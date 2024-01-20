@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SelectSameOrdersArea: View {
     
-    @EnvironmentObject var selectedDataStore: DataStore
+    @EnvironmentObject var dataStore: DataStore
     @Binding var currentArea: Int
     @State private var markedOrders: Set<String> = Set()
     @State private var orders: [Order] = []
@@ -59,18 +59,18 @@ struct SelectSameOrdersArea: View {
             CustomFullButton(action: {
                 for order in orders {
                     if markedOrders.contains(order.code) {
-                        selectedDataStore.addSelectedOrder(order)
+                        dataStore.addSelectedOrder(order)
                     }
                 }
 //                print("Steps with same evidence before aligning: \(selectedDataStore.getAllSameEvidenceSteps())")
-                selectedDataStore.alignSelectedStepsOrder()
+                dataStore.alignSelectedStepsOrder()
                 
-                let filteredSteps = selectedDataStore.getSelectedSteps()
+                let filteredSteps = dataStore.getSelectedSteps()
                     .filter { orderStep in markedOrders.contains(orderStep.step.stringValue) }
 
 
                     for orderStep in filteredSteps {
-                        selectedDataStore.addSameEvidenceStep(orderStep)
+                        dataStore.addSameEvidenceStep(orderStep)
                     }
                 
 //                print("All Steps: \(selectedDataStore.getAllOrderSteps())")
@@ -80,24 +80,26 @@ struct SelectSameOrdersArea: View {
 //                print("Steps with same evidence: \(selectedDataStore.getAllSameEvidenceSteps())")
                 
                 // generate StepsProgressBar that will show up in the next page
-                selectedDataStore.createListBooleanSteps()
-                let booleanStepsDictionary = selectedDataStore.getListBooleanSteps()
+                dataStore.createListBooleanSteps()
+                let booleanStepsDictionary = dataStore.getListBooleanSteps()
                 
 //                print("----------------------------------")
 //                booleanStepsDictionary.forEach { (step, boolValue) in
 //                    print("Step: \(step), Bool Value: \(boolValue)")
 //                }
                 
-                let orderedSteps = selectedDataStore.getSelectedSteps()
+                let orderedSteps = dataStore.getSelectedSteps()
                 orderedSteps.forEach { step in
                     if let boolValue = booleanStepsDictionary[step] {
-                        selectedDataStore.addStepToProgressBar(step)
-                        selectedDataStore.addStepsIsSameEvidence(boolValue)
+                        dataStore.addStepToProgressBar(step)
+                        dataStore.addStepsIsSameEvidence(boolValue)
                     } else {
                         print("\(step) not found in booleanStepsDictionary")
                     }
                 }
 //                print("SelectSameOrdersArea: selectedDataStore.getStepsIsSameEvidence().first: \(selectedDataStore.getStepsIsSameEvidence().first)")
+                var steps = dataStore.getSelectedSteps()
+                print("all (selected) steps after SelectSameOrdersPage: \(steps)")
                 
                 //navigate to next page
                 isNavigationActive = true
@@ -107,7 +109,7 @@ struct SelectSameOrdersArea: View {
             .buttonStyle(PlainButtonStyle())
             
             // NavigationLink to the next page
-            NavigationLink("", destination: UploadEvidencePage().environmentObject(selectedDataStore), isActive: $isNavigationActive)
+            NavigationLink("", destination: UploadEvidencePage().environmentObject(dataStore), isActive: $isNavigationActive)
             
             CustomEmptyButton(action: {
                 currentArea = 2
@@ -119,7 +121,10 @@ struct SelectSameOrdersArea: View {
         }
         .onAppear {
             // Set the initial list of orders when the view appears
-            orders = selectedDataStore.getOrders()
+            orders = dataStore.getOrders()
+            
+            var steps = dataStore.getSelectedSteps()
+            print("all (selected) steps after SelectSteps page: \(steps)")
         }
         
     }

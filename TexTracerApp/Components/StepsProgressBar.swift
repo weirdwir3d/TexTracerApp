@@ -2,10 +2,11 @@ import SwiftUI
 
 struct StepsProgressBar: View {
     
-    @EnvironmentObject var selectedDataStore: DataStore
+    @EnvironmentObject var dataStore: DataStore
     var steps: [OrderStep]
     var stepsIsSameEvidence: [Bool]
     //    @State var completedSteps: [OrderStep] = []
+    //TODO: see if this is needed at all
     @State var currentSteps: [OrderStep] = []
     
     struct StepViewItem: Hashable {
@@ -30,25 +31,30 @@ struct StepsProgressBar: View {
     var body: some View {
             HStack {
                 let viewsToDisplay: [StepViewItem] = steps.indices.flatMap { index -> [StepViewItem?] in
-                    if selectedDataStore.getDoneStepsProgressBar().contains(steps[index]) {
+                    print("ALL STEPS: \(steps)")
+                    if dataStore.getDoneStepsProgressBar().contains(steps[index]) {
                         return [StepViewItem(text: "greenCircle", view: AnyView(greenCircle()))]
                     } else {
-                        if steps.first == steps[index] && selectedDataStore.getStepsIsSameEvidence().first == true {
+                        if steps.first == steps[index] && dataStore.getStepsIsSameEvidence().first == true {
                             var views: [StepViewItem] = []
                             
-                            for (boolIndex, boolVal) in selectedDataStore.getStepsIsSameEvidence().enumerated() {
+                            for (boolIndex, boolVal) in dataStore.getStepsIsSameEvidence().enumerated() {
 //                                print("boolIndex: \(boolIndex), boolVal: \(boolVal)")
                                 let correspondingStep = steps[boolIndex]
                                 if boolVal {
                                     views.append(StepViewItem(text: "yellowCircle", view: AnyView(yellowCircle())))
+                                    dataStore.addStepToCurrentSteps(steps[index])
+                                    currentSteps.append(steps[index])
                                 }
                             }
 
                             return views
-                        } else if steps.first == steps[index] && selectedDataStore.getStepsIsSameEvidence().first == false {
+                        } else if steps.first == steps[index] && dataStore.getStepsIsSameEvidence().first == false {
+                            dataStore.addStepToCurrentSteps(steps[index])
+                            currentSteps.append(steps[index])
                             return [StepViewItem(text: "yellowCircle", view: AnyView(yellowCircle()))]
                         } else {
-                            if selectedDataStore.getStepsIsSameEvidence()[index] == false {
+                            if dataStore.getStepsIsSameEvidence()[index] == false {
                                 return [StepViewItem(text: "redCircle", view: AnyView(redCircle()))]
                             }
                             return []
@@ -78,10 +84,11 @@ struct StepsProgressBar: View {
                 
             }
             .onAppear {
-                var boolList = selectedDataStore.getStepsIsSameEvidence()
+                var boolList = dataStore.getStepsIsSameEvidence()
                 for bool in boolList {
 //                    print("selectedDataStore.getStepsIsSameEvidence(): \(bool)")
                 }
+//                dataStore.clearCurrentSteps()
                 
             }
         

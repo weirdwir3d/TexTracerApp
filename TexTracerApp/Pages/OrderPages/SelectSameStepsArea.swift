@@ -2,14 +2,14 @@ import SwiftUI
 
 struct SelectSameStepsArea: View {
     
-    @EnvironmentObject var selectedDataStore: DataStore
+    @EnvironmentObject var dataStore: DataStore
     @State private var toggledSteps: [String] = []
 
     @Binding var currentArea: Int
     
     var body: some View {
         
-        var orderSteps = selectedDataStore.getSelectedSteps()
+        var orderSteps = dataStore.getSelectedSteps()
         
         ScrollView {
             
@@ -40,7 +40,7 @@ struct SelectSameStepsArea: View {
             CustomFullButton(action: {
                 for orderStep in orderSteps {
                     if toggledSteps.contains(orderStep.step.stringValue) {
-                        selectedDataStore.addSameEvidenceStep(orderStep)
+                        dataStore.addSameEvidenceStep(orderStep)
                     }
                 }
 //                print("same evidence steps: \(selectedDataStore.getAllSameEvidenceSteps())")
@@ -59,6 +59,10 @@ struct SelectSameStepsArea: View {
             }
             .buttonStyle(PlainButtonStyle())
             
+        }
+        .onAppear {
+//            var steps = dataStore.getSelectedSteps()
+//            print("all (selected) steps after SelectSteps page: \(steps)")
         }
         
     }

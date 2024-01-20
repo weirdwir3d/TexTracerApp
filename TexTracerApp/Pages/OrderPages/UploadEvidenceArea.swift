@@ -1,84 +1,118 @@
 import SwiftUI
+import UIKit
 
 struct UploadEvidenceArea: View {
     
     @EnvironmentObject var dataStore: DataStore
     @State private var task: UploadEvidenceTask = Task.uploadTaskTest as! UploadEvidenceTask
-    
+    @State var allStyleNrs: [String] = []
+    @State private var showAlert: Bool = false
+    @State private var showActionSheet: Bool = false
+    @State private var imagePickerSourceType: UIImagePickerController.SourceType?
     let index: Int
+    @State private var selectedImage: UIImage? {
+        didSet {
+            dataStore.setSelectedImage(selectedImage)
+        }
+    }
     
     var body: some View {
         StepsProgressBar(steps: dataStore.getStepsProgressBar(), stepsIsSameEvidence: dataStore.getStepsIsSameEvidence())
             .environmentObject(dataStore)
         
-        VStack {
-            //upload picture button
-            Button(action: {
-                //onButtonClick
-            }) {
-                VStack {
-                    Image(systemName: "camera")
-                        .font(.title)
-                        .foregroundColor(.black)
-                    
-                    Text("Upload picture")
-                        .foregroundColor(.black)
+        Spacer().frame(height: 50)
+        
+        ScrollView {
+            
+            VStack {                
+                if let selectedImage = dataStore.getSelectedImage() {
+                    ImageBoxView(image: selectedImage).environmentObject(dataStore)
+                } else {
+                    UploadPictureButton(showAlert: $showAlert, showActionSheet: $showActionSheet, imagePickerSourceType: $imagePickerSourceType, selectedImage: $selectedImage)
                 }
-                .padding()
-                .background(Color.theme.lightGreyColor)
-                .cornerRadius(10)
+                
+                //all order info
+                WhiteBox {
+                    ScrollView {
+                        
+                        VStack(alignment: .leading) {
+                            
+                            //current steps
+                            Text("Current steps").bold()
+                            Text(dataStore.getCurrentSteps().map { "\($0.step.stringValue)" }.joined(separator: ", "))
+                            Divider()
+                            
+                            //orders
+                            Text("Orders").bold()
+                            Text(dataStore.getSelectedOrders().map { "\($0.code)" }.joined(separator: ", "))
+                            Divider()
+                            
+                            //assigned by
+                            Text("Assigned by").bold()
+                            Text("\(task.assignerId)")
+                            Divider()
+                            
+                            //date
+                            Text("Date").bold()
+                            Text("\(task.receivedDate)")
+                            Divider()
+                            
+                            //style nrs
+                            Text("Style numbers").bold()
+                            Text(allStyleNrs.map { "\($0)" }.joined(separator: ", "))
+                            Divider()
+                            
+                            //final client
+                            Text("Final client").bold()
+                            if let orderCode = task.orderCode {
+                                Text(orderCode)
+                            } else {
+                                Text("No order code")
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                    
+                }
+                
+//                                if let selectedImage = selectedImage {
+//                                    ImageBoxView(image: selectedImage)
+//                                }
+                
+            }
+            .onAppear {
+                self.task = dataStore.getCurrentTask() as! UploadEvidenceTask
+                
+                for order in dataStore.getOrders() {
+                    let styleNr = order.getStyleNumber()
+                    if !allStyleNrs.contains(styleNr) {
+                        allStyleNrs.append(styleNr)
+                    }
+                }
+                
+                print("CURRENT STEPS: \(dataStore.getCurrentSteps().map { "\($0.step.stringValue)" }.joined(separator: ", "))")
+//                print("currentTask: \(task.toString())")
+            }
+            .sheet(isPresented: Binding<Bool>(
+                get: { imagePickerSourceType != nil },
+                set: { _ in imagePickerSourceType = nil }
+            )) {
+                ImagePickerView(sourceType: imagePickerSourceType ?? .camera) { image in
+                    // Use the selected image, you can implement your logic here
+                    selectedImage = image
+//                    print("Selected image: \(image)")
+                }
             }
             
-            Text("Area nr. \(index)")
-            
-            //all order info
-
-            //current steps
-            Text("Current steps")
-//            Text("\(dataStore.getC)")
-            
-            //orders
-            
-            //assigned by
-            
-            //date
-            
-            //style nrs
-            
-            //final client
-            
-            
-//            ForEach(orders) { order in
-//                Toggle(isOn: Binding(
-//                    get: { markedOrders.contains(order.code) },
-//                    set: { newValue in
-//                        if newValue {
-//                            markedOrders.insert(order.code)
-//                        } else {
-//                            markedOrders.remove(order.code)
-//                        }
-////                            print("Selected Orders: \(markedOrders)")
-//                    }
-//                )) {
-//                    HStack(spacing: 90) {
-//                        Text(order.code)
-//                        Text(order.styleNumber)
-//                    }
-//                }
-//                .toggleStyle(CheckboxToggleStyle())
-//                Divider()
-//            }
             
         }
-        .onAppear {
-            self.task = dataStore.getCurrentTask() as! UploadEvidenceTask
-            
-            print("currentTask: \(task.toString())")
-        }
-        
         
     }
+    
 }
+
 
 #Preview {
     UploadEvidenceArea(index: 1).environmentObject(DataStore())

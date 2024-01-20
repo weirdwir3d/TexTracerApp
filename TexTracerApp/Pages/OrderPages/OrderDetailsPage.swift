@@ -29,7 +29,7 @@ struct OrderDetailsPage: View {
                 selectedDataStore.addAllOrderSteps(task.orderSteps)
                 // add test orders
                 selectedDataStore.addOrders(orders)
-    //            print("All Order Steps in selectedDataStore: \(selectedDataStore.getAllOrderSteps())")
+                //            print("All Order Steps in selectedDataStore: \(selectedDataStore.getAllOrderSteps())")
             }
         }
         .navigationBarTitle("Order details", displayMode: .inline)

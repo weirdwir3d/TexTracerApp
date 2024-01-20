@@ -6,6 +6,7 @@ struct StepsProgressBar: View {
     var steps: [OrderStep]
     var stepsIsSameEvidence: [Bool]
     //    @State var completedSteps: [OrderStep] = []
+    //TODO: see if this is needed at all
     @State var currentSteps: [OrderStep] = []
     
     struct StepViewItem: Hashable {
@@ -30,6 +31,7 @@ struct StepsProgressBar: View {
     var body: some View {
             HStack {
                 let viewsToDisplay: [StepViewItem] = steps.indices.flatMap { index -> [StepViewItem?] in
+                    print("ALL STEPS: \(steps)")
                     if dataStore.getDoneStepsProgressBar().contains(steps[index]) {
                         return [StepViewItem(text: "greenCircle", view: AnyView(greenCircle()))]
                     } else {
@@ -41,12 +43,14 @@ struct StepsProgressBar: View {
                                 let correspondingStep = steps[boolIndex]
                                 if boolVal {
                                     views.append(StepViewItem(text: "yellowCircle", view: AnyView(yellowCircle())))
+                                    dataStore.addStepToCurrentSteps(steps[index])
                                     currentSteps.append(steps[index])
                                 }
                             }
 
                             return views
                         } else if steps.first == steps[index] && dataStore.getStepsIsSameEvidence().first == false {
+                            dataStore.addStepToCurrentSteps(steps[index])
                             currentSteps.append(steps[index])
                             return [StepViewItem(text: "yellowCircle", view: AnyView(yellowCircle()))]
                         } else {
@@ -84,7 +88,7 @@ struct StepsProgressBar: View {
                 for bool in boolList {
 //                    print("selectedDataStore.getStepsIsSameEvidence(): \(bool)")
                 }
-                dataStore.clearCurrentSteps()
+//                dataStore.clearCurrentSteps()
                 
             }
         

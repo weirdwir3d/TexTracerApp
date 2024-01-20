@@ -6,29 +6,41 @@ import Combine
 class DataStore: ObservableObject {
     
     //current task
-    @Published var currentTask: UploadEvidenceTask?
+    @Published private var currentTask: UploadEvidenceTask?
     //all steps of an order
-    @Published var allOrderSteps: [OrderStep] = []
+    @Published private var allOrderSteps: [OrderStep] = []
     //all steps the user chose to upload order evidence for
-    @Published var selectedSteps: [OrderStep] = []
+    @Published private var selectedSteps: [OrderStep] = []
     //each step associated with one image
-    @Published var picturesForSteps: [OrderStep: Image] = [:]
+    @Published private var picturesForSteps: [OrderStep: Image] = [:]
     //list of steps that share the same image
-    @Published var stepsWithSharedPicture: [OrderStep] = []
+    @Published private var stepsWithSharedPicture: [OrderStep] = []
     //list of orders the user can upload evidence for
-    @Published var orders: [Order] = []
+    @Published private var orders: [Order] = []
     //list of orders the user selected to upload evidence for
-    @Published var selectedOrders: [Order] = []
+    @Published private var selectedOrders: [Order] = []
     //makes it easier to keep track of what steps share the same order evidence (true) and which ones dont (false)
-    @Published var listBooleanSteps: [OrderStep: Bool] = [:]
+    @Published private var listBooleanSteps: [OrderStep: Bool] = [:]
     
     // steps to create progress bar
-    @Published var stepsProgressBar: [OrderStep] = []
-    @Published var doneStepsProgressBar: [OrderStep] = []
+    @Published private var stepsProgressBar: [OrderStep] = []
+    @Published private var doneStepsProgressBar: [OrderStep] = []
     // keeps track of what stepsProgressBar share the same evidence (true) and whicon ones dont (false)
-    @Published var stepsIsSameEvidence: [Bool] = []
-    @Published var currentSteps: [OrderStep] = []
+    @Published private var stepsIsSameEvidence: [Bool] = []
+    @Published private var currentSteps: [OrderStep] = []
     
+    //image that the user selects for order evidence before confirming its upload
+    @Published private var selectedImage: UIImage?
+    
+    
+    func setSelectedImage(_ image: UIImage?) {
+        selectedImage = image
+//        print("image set to \(selectedImage)")
+    }
+    
+    func getSelectedImage() -> UIImage? {
+        return selectedImage
+    }
     
     func getCurrentSteps() -> [OrderStep] {
         return currentSteps
@@ -182,6 +194,10 @@ class DataStore: ObservableObject {
     func getSelectedOrders() -> [Order] {
             return selectedOrders
         }
+    
+    func getDummyImage() -> UIImage {
+        return UIImage(named: "exampleImage")!
+    }
     
 }
 

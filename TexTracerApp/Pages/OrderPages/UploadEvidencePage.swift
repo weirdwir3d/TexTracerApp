@@ -7,6 +7,14 @@ struct UploadEvidencePage: View {
     @State private var visibleAreas: [UploadEvidenceArea] = []
     @State private var currentAreaIndex: Int = 0
     
+    var isNextButtonDisabled: Bool {
+            guard currentAreaIndex < visibleAreas.count else {
+                return true
+            }
+
+        return dataStore.getSelectedImage() == nil
+        }
+    
     var body: some View {
         VStack {
             // Display the current UploadEvidenceArea
@@ -21,7 +29,8 @@ struct UploadEvidencePage: View {
                     Text("Next")
                 }
                 .buttonStyle(PlainButtonStyle())
-                .disabled(currentAreaIndex == visibleAreas.count - 1)
+                .disabled(currentAreaIndex == visibleAreas.count - 1 || isNextButtonDisabled)
+
                 
                 CustomEmptyButton(action: {
                     navigateToPreviousArea()

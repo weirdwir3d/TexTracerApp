@@ -9,8 +9,12 @@ struct UploadEvidenceArea: View {
     @State private var showAlert: Bool = false
     @State private var showActionSheet: Bool = false
     @State private var imagePickerSourceType: UIImagePickerController.SourceType?
-    @State private var selectedImage: UIImage?
     let index: Int
+    @State private var selectedImage: UIImage? {
+        didSet {
+            dataStore.setSelectedImage(selectedImage)
+        }
+    }
     
     var body: some View {
         StepsProgressBar(steps: dataStore.getStepsProgressBar(), stepsIsSameEvidence: dataStore.getStepsIsSameEvidence())
@@ -20,15 +24,12 @@ struct UploadEvidenceArea: View {
         
         ScrollView {
             
-            VStack {
-                //TODO: if there is a selectedImage, then display that one. otherwise display the UploadPictureButton element
-//                UploadPictureButton(showAlert: $showAlert, showActionSheet: $showActionSheet, imagePickerSourceType: $imagePickerSourceType)
-                
-                if let selectedImage = selectedImage {
-                                    ImageBoxView(image: selectedImage, selectedImage: $selectedImage)
-                                } else {
-                                    UploadPictureButton(showAlert: $showAlert, showActionSheet: $showActionSheet, imagePickerSourceType: $imagePickerSourceType, selectedImage: $selectedImage)
-                                }
+            VStack {                
+                if let selectedImage = dataStore.getSelectedImage() {
+                    ImageBoxView(image: selectedImage).environmentObject(dataStore)
+                } else {
+                    UploadPictureButton(showAlert: $showAlert, showActionSheet: $showActionSheet, imagePickerSourceType: $imagePickerSourceType, selectedImage: $selectedImage)
+                }
                 
                 //all order info
                 WhiteBox {
@@ -91,7 +92,8 @@ struct UploadEvidenceArea: View {
                     }
                 }
                 
-                print("currentTask: \(task.toString())")
+                print("CURRENT STEPS: \(dataStore.getCurrentSteps().map { "\($0.step.stringValue)" }.joined(separator: ", "))")
+//                print("currentTask: \(task.toString())")
             }
             .sheet(isPresented: Binding<Bool>(
                 get: { imagePickerSourceType != nil },
@@ -100,7 +102,7 @@ struct UploadEvidenceArea: View {
                 ImagePickerView(sourceType: imagePickerSourceType ?? .camera) { image in
                     // Use the selected image, you can implement your logic here
                     selectedImage = image
-                    print("Selected image: \(image)")
+//                    print("Selected image: \(image)")
                 }
             }
             

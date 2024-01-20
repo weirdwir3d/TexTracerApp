@@ -16,10 +16,10 @@ struct UploadPictureButton: View {
                     .font(.largeTitle)
                     .foregroundColor(.black)
                 
-                Spacer().frame(height: 4)
+                Spacer().frame(height: 8)
                 
                 Text("Upload picture")
-                    .font(.system(size: 8))
+                    .font(.system(size: 20))
                     .foregroundColor(.black)
             }
             .padding(40)
@@ -54,8 +54,6 @@ struct UploadPictureButton: View {
         }
     }
 }
-
-
 
 //#Preview {
 //    UploadPictureButton()

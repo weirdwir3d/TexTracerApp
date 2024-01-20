@@ -48,7 +48,7 @@ struct TexTracerAppApp: App {
                           OrderStep(id: UUID(), step: Step.Spinning, supplierId: texfiber.id),
                           OrderStep(id: UUID(), step: Step.Ginning, supplierId: texfiber.id),
                           OrderStep(id: UUID(), step: Step.Packing, supplierId: texfiber.id),
-                          OrderStep(id: UUID(), step: Step.Sewing, supplierId: finestitch.id),
+                          OrderStep(id: UUID(), step: Step.Dyeing, supplierId: finestitch.id),
         ]
         
         //steps:

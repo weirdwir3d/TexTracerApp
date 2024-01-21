@@ -8,15 +8,15 @@ class ReadDocumentTask: Task {
     let pdfFileName: String
     var pdfFile: Data?
     var filePath: URL?
-    var message: String?
+    var messageFromSender: String?
 //    var pdfView = PDFView()
     
-    init(id: UUID, receivedDate: Date, assignerId: UUID, assigneeId: UUID, name: String, pdfFileName: String, message: String?) {
+    init(id: UUID, receivedDate: Date, assignerId: UUID, assigneeId: UUID, name: String, pdfFileName: String, messageFromSender: String?) {
         self.assignerId = assignerId
         self.assigneeId = assigneeId
         self.name = name
         self.pdfFileName = pdfFileName
-        self.message = message
+        self.messageFromSender = messageFromSender
 //        self.pdfFile = nil  // Initialize to nil
 
         super.init(id: id, receivedDate: receivedDate)

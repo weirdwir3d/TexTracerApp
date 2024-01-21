@@ -89,7 +89,7 @@ extension Task {
                     assigneeId: UUID(),
                     name: "Delivery Manual 2023 (v3)",
                     pdfFileName: pdfFileName,
-                    message: dummyText()
+                    messageFromSender: dummyText()
                 )
             } else {
                 fatalError("Unable to load the PDF file.")

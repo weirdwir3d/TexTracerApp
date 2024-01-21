@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject var readComplianceStore = ReadComplianceDataStore()
     @StateObject var tasksStore = TasksStore()
     
     var body: some View {
@@ -9,6 +10,7 @@ struct ContentView: View {
             TabView {
                 TasksPage()
                     .environmentObject(tasksStore)
+                    .environmentObject(readComplianceStore)
                     .tabItem {
                         Image(systemName: "checklist")
                         Text("Tasks")
@@ -21,11 +23,14 @@ struct ContentView: View {
                         Text("Order evidence")
                     }
                 
-                CompliancePage()
+                AllCompliancePage()
+                    .environmentObject(tasksStore)
+                    .environmentObject(readComplianceStore)
                     .tabItem {
                         Image(systemName: "doc")
                         Text("Compliance")
                     }
+                
                 
                 MyAccountPage()
                     .tabItem {
@@ -38,6 +43,8 @@ struct ContentView: View {
         
             .onAppear {
                 loadInitialData()
+                print("tasksStore: \(tasksStore.description)")
+                print("DocumentStore: \(readComplianceStore.description)")
             }
         
     }
@@ -97,14 +104,14 @@ struct ContentView: View {
                                          assigneeId: texfiber.id,
                                          name: "Finestitch Delivery Manual 2023 (v2)",
                                          pdfFileName: "dummyFile",
-                                         message: dummyText())
+                                         messageFromSender: dummyText())
         var path = readTask1.generateFilePath(fileName: "dummyFile")
         //        print("heres the path \(path)")
         
         readTask1.addPdfFile {
             // This code block will be executed once the PDF is loaded
-            print("\(readTask1.isFileNil())")
-            print("LOADED FILE: \(readTask1.pdfFile)")
+//            print("\(readTask1.isFileNil())")
+//            print("LOADED FILE: \(readTask1.pdfFile)")
             self.tasksStore.addTask(task: readTask1)
         }
         

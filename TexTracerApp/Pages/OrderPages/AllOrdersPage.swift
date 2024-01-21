@@ -5,7 +5,7 @@ struct AllOrdersPage: View {
     
     @EnvironmentObject var tasksStore: TasksStore
     @State private var searchText = ""
-    @State private var selectedCategory = 0 // Start with Review
+    @State private var selectedCategory = 0
     @State private var selectedTask: Task? = nil
 
     var filteredTasks: [Task] {

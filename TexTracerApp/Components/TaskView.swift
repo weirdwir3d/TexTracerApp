@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TaskView: View {
     
+    @EnvironmentObject var readComplianceDataStore: ReadComplianceDataStore
     @EnvironmentObject var tasksStore: TasksStore
     let task: Task
     
@@ -19,16 +20,17 @@ struct TaskView: View {
     }
     
     private func destinationForTask() -> some View {
-            if let uploadTask = task as? UploadEvidenceTask {
-                return AnyView(OrderDetailsPage(task: uploadTask))
-            } else if let readTask = task as? ReadDocumentTask {
-                // Handle other task types
-                return AnyView(DocumentDetailsPage(task: readTask))
-            } else {
-                // Default destination or handle other cases
-                return AnyView(ErrorTaskView())
-            }
+        if let uploadTask = task as? UploadEvidenceTask {
+            return AnyView(OrderDetailsPage(task: uploadTask))
+        } else if let readTask = task as? ReadDocumentTask {
+            // Handle other task types
+            return AnyView(DocumentDetailsPage(task: readTask))
+        } else {
+            // Default destination or handle other cases
+            return AnyView(ErrorTaskView())
         }
+    }
+
     
 }
 
@@ -41,6 +43,7 @@ struct TaskView: View {
             task: UploadEvidenceTask(id: UUID(), receivedDate: Date(), orderCode: "FFA534", assignerId: UUID(), assigneeId: UUID(), orderSteps: [OrderStep(id: UUID(), step: Step.Spinning, supplierId: UUID()), OrderStep(id: UUID(), step: Step.Ginning, supplierId: UUID())])
         )
             .environmentObject(TasksStore())
+            .environmentObject(ReadComplianceDataStore())
     }
 }
 

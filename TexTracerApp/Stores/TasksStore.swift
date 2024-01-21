@@ -1,25 +1,25 @@
 import Foundation
 
-@MainActor
-class TasksStore: ObservableObject {
-    
+class TasksStore: ObservableObject, CustomStringConvertible {
     @Published var tasks: [Task] = []
-    
+
     func getTasks() -> [Task] {
-        let tasksCopy = self.tasks
-        return self.tasks
+        return tasks
     }
-    
-//    func addDocTask(task: Task) {
-//        self.docTasks.append(task)
-//    }
-    
+
     func addTask(task: Task) {
         self.tasks.append(task)
     }
-    
-    func getTaskByImdex(index: Int) -> Task {
+
+    func getTaskByIndex(index: Int) -> Task {
         return tasks[index]
+    }
+
+    var description: String {
+        return """
+        TasksStore:
+          - Tasks: \(tasks)
+        """
     }
 }
 
@@ -51,4 +51,5 @@ extension TasksStore {
         return tasksStore
     }
 }
+
 

@@ -55,7 +55,7 @@ struct SelectSameStepsArea: View {
             CustomEmptyButton(action: {
                 currentArea = 1
             }) {
-                Text("Back to Select steps")
+                (nil, Text("Back to Select steps"))
             }
             .buttonStyle(PlainButtonStyle())
             

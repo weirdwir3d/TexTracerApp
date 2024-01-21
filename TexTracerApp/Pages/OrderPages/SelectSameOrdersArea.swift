@@ -114,7 +114,7 @@ struct SelectSameOrdersArea: View {
             CustomEmptyButton(action: {
                 currentArea = 2
             }) {
-                Text("Back to Select steps with same evidence")
+                (nil, Text("Back to Select steps with same evidence"))
             }
             .buttonStyle(PlainButtonStyle())
             

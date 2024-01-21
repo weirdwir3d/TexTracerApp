@@ -76,6 +76,23 @@ extension Task {
 
         return ReviewEvidenceTask(id: UUID(), receivedDate: Date(), orderCode: "TQX276", assignerId: UUID(), assigneeId: UUID(), orderSteps: orderSteps)
     }
+    
+    static var readDocumentTaskTest: Task {
+            let pdfFileName = "dummyFile"
+
+            if let pdfPath = Bundle.main.path(forResource: pdfFileName, ofType: "pdf"),
+               let pdfData = try? Data(contentsOf: URL(fileURLWithPath: pdfPath)) {
+                return ReadDocumentTask(
+                    id: UUID(),
+                    receivedDate: Date(),
+                    assignerId: UUID(),
+                    assigneeId: UUID(),
+                    name: "Delivery Manual 2023 (v3)",
+                    pdfFileName: pdfFileName,
+                    message: dummyText()
+                )
+            } else {
+                fatalError("Unable to load the PDF file.")
+            }
+        }
 }
-
-

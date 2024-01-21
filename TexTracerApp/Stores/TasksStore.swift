@@ -10,10 +10,17 @@ class TasksStore: ObservableObject {
         return self.tasks
     }
     
+//    func addDocTask(task: Task) {
+//        self.docTasks.append(task)
+//    }
+    
     func addTask(task: Task) {
         self.tasks.append(task)
     }
     
+    func getTaskByImdex(index: Int) -> Task {
+        return tasks[index]
+    }
 }
 
 extension TasksStore {
@@ -29,6 +36,8 @@ extension TasksStore {
         
         let reviewTaskTest = Task.reviewTaskTest
         let reviewTaskTest2 = Task.reviewTaskTest
+
+        let readDocumentTaskTest = Task.readDocumentTaskTest // Include the read document task
         
         tasksStore.addTask(task: uploadTaskTest)
         tasksStore.addTask(task: uploadTaskTest2)
@@ -37,6 +46,9 @@ extension TasksStore {
         tasksStore.addTask(task: reviewTaskTest)
         tasksStore.addTask(task: reviewTaskTest2)
         
+        tasksStore.addTask(task: readDocumentTaskTest) // Add the read document task
+        
         return tasksStore
     }
 }
+

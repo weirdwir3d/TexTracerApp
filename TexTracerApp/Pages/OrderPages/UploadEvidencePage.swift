@@ -20,7 +20,6 @@ struct UploadEvidencePage: View {
             
             // Display the current UploadEvidenceArea
             if visibleAreas.indices.contains(currentAreaIndex) {
-                visibleAreas[currentAreaIndex] = UploadEvidenceArea(index: currentAreaIndex)
                 visibleAreas[currentAreaIndex].environmentObject(dataStore)
             }
             
@@ -44,7 +43,7 @@ struct UploadEvidencePage: View {
                 CustomEmptyButton(action: {
                     navigateToPreviousArea()
                 }) {
-                    Text("Previous")
+                    (nil, Text("Previous"))
                 }
                 .buttonStyle(PlainButtonStyle())
                 .disabled(currentAreaIndex == 0)

@@ -17,8 +17,8 @@ struct UploadEvidenceArea: View {
     }
     
     var body: some View {
-//        StepsProgressBar(steps: dataStore.getStepsProgressBar())
-//            .environmentObject(dataStore)
+        StepsProgressBar(steps: dataStore.getStepsProgressBar())
+            .environmentObject(dataStore)
         
         Spacer().frame(height: 50)
         
@@ -33,8 +33,6 @@ struct UploadEvidenceArea: View {
                 
                 //all order info
                 WhiteBox {
-                    ScrollView {
-                        
                         VStack(alignment: .leading) {
                             
                             //current steps
@@ -71,9 +69,6 @@ struct UploadEvidenceArea: View {
                             }
                             
                         }
-                        
-                    }
-                    
                     
                 }
                 

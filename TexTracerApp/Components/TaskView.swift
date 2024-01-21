@@ -6,7 +6,7 @@ struct TaskView: View {
     let task: Task
     
     var body: some View {
-        NavigationLink(destination: OrderDetailsPage(task: task as! UploadEvidenceTask)) {
+        NavigationLink(destination: destinationForTask()) {
             HStack {
                 Text(task.description)
                     .font(.subheadline)
@@ -17,7 +17,22 @@ struct TaskView: View {
         }
         .environmentObject(tasksStore)
     }
+    
+    private func destinationForTask() -> some View {
+            if let uploadTask = task as? UploadEvidenceTask {
+                return AnyView(OrderDetailsPage(task: uploadTask))
+            } else if let readTask = task as? ReadDocumentTask {
+                // Handle other task types
+                return AnyView(DocumentDetailsPage(task: readTask))
+            } else {
+                // Default destination or handle other cases
+                return AnyView(ErrorTaskView())
+            }
+        }
+    
 }
+
+
 
 
 #Preview {

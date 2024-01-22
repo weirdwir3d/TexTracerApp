@@ -12,7 +12,7 @@ struct CommentTextField: View {
                     Text(message.content)
                         .padding(.all, 20)
                         .foregroundColor(Color.white)
-                        .background(Color.theme.darkGreyColor)
+                        .background(Color.theme.accentColor)
                 }
             }
 
@@ -65,13 +65,6 @@ struct CommentTextField: View {
 
         // After sending a message, refresh the view
         refreshMessages()
-    }
-}
-
-
-extension View {
-    func endEditing() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

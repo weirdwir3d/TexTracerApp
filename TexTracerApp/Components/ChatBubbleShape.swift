@@ -79,6 +79,6 @@ struct ChatBubbleShape: Shape {
     }
 }
 
-//#Preview {
-//    ChatBubbleShape()
-//}
+#Preview {
+    ChatBubbleShape(direction: .right)
+}

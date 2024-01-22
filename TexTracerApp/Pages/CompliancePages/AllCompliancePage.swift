@@ -34,9 +34,9 @@ struct AllCompliancePage: View {
             ScrollView {
                 LazyVStack {
                     ForEach(filteredTasks.compactMap { $0 as? ReadDocumentTask }) { task in
-                        DocumentDetailsPage(task: task)
+                        DocumentDetailBox(task: task)
                     }
-                }
+                }.padding()
             }
         }
         .background(Color(.systemBackground))

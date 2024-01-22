@@ -106,6 +106,11 @@ struct ContentView: View {
                                          pdfFileName: "dummyFile",
                                          messageFromSender: dummyText())
         var path = readTask1.generateFilePath(fileName: "dummyFile")
+        readTask1.addMessage(content: dummyText(), dateTime: DateUtility.formatDateTimeToString(Date()))
+        readTask1.addMessage(content: "This is another message, who would have thought", dateTime: DateUtility.formatDateTimeToString(Date()))
+        readTask1.addMessage(content: "Pls let us pass lol", dateTime: DateUtility.formatDateTimeToString(Date()))
+        readTask1.addMessage(content: "That does not look like a Delivery manual to me", dateTime: DateUtility.formatDateTimeToString(Date()))
+        readTask1.addMessage(content: "It's actually an amazing book about PTSD (first found and studied in Vietnam veterans) and its impact on society", dateTime: DateUtility.formatDateTimeToString(Date()))
         //        print("heres the path \(path)")
         
         readTask1.addPdfFile {
@@ -113,7 +118,10 @@ struct ContentView: View {
 //            print("\(readTask1.isFileNil())")
 //            print("LOADED FILE: \(readTask1.pdfFile)")
             self.tasksStore.addTask(task: readTask1)
+            self.readComplianceStore.addTask(readTask1)
         }
+        
+        print("\(readComplianceStore.getTasks())")
         
     }
     

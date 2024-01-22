@@ -1,20 +1,28 @@
 import SwiftUI
 import PDFKit
 
-struct PDFThumbnailView: View {
+struct PDFThumbnail: View {
     let pdfURL: URL
     let thumbnailSize: CGSize
+    @State private var showPDFViewer = false
     
     var body: some View {
-        if let thumbnailImage = generateThumbnail() {
-            Image(uiImage: thumbnailImage)
-                .resizable()
-                .scaledToFit()
-                .frame(width: thumbnailSize.width, height: thumbnailSize.height)
-        } else {
-            // Placeholder or default image in case of failure
-            Text("Thumbnail not available")
-        }
+        Button(action: {
+                    showPDFViewer.toggle()
+                }) {
+                    if let thumbnailImage = generateThumbnail() {
+                        Image(uiImage: thumbnailImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: thumbnailSize.width, height: thumbnailSize.height)
+                    } else {
+                        // Placeholder or default image in case of failure
+                        Text("Thumbnail not available")
+                    }
+                }
+                .sheet(isPresented: $showPDFViewer) {
+                    PDFViewer(pdfURL: pdfURL)
+                }
     }
     
     private func generateThumbnail() -> UIImage? {
@@ -59,9 +67,9 @@ extension PDFView {
     }
 }
 
-struct PDFThumbnailView_Previews: PreviewProvider {
+struct PDFThumbnail_Previews: PreviewProvider {
     static var previews: some View {
-        PDFThumbnailView(pdfURL: URL(fileURLWithPath: "dummyFile.pdf"), thumbnailSize: CGSize(width: 100, height: 150))
+        PDFThumbnail(pdfURL: URL(fileURLWithPath: "dummyFile.pdf"), thumbnailSize: CGSize(width: 100, height: 150))
             .previewLayout(.sizeThatFits)
             .padding()
     }

@@ -2,14 +2,14 @@ import Foundation
 
 class Task: Identifiable, ObservableObject, Hashable {
     let id: UUID
-    let receivedDate: Date
+    let receivedDate: String
     let taskStatus: TaskStatus
     var description: String
     var orderCode: String? // Optional field
 
     init(id: UUID, receivedDate: Date, orderCode: String? = nil) {
         self.id = id
-        self.receivedDate = receivedDate
+        self.receivedDate = DateUtility.formatDateTimeToString(receivedDate)
         self.description = ""
         self.taskStatus = TaskStatus.Incomplete
         self.orderCode = orderCode
@@ -24,7 +24,7 @@ class Task: Identifiable, ObservableObject, Hashable {
     }
 
     // Getter function for receivedDate
-    func getReceivedDate() -> Date {
+    func getReceivedDate() -> String {
         return receivedDate
     }
 

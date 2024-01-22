@@ -24,7 +24,8 @@ struct TaskView: View {
             return AnyView(OrderDetailsPage(task: uploadTask))
         } else if let readTask = task as? ReadDocumentTask {
             // Handle other task types
-            return AnyView(DocumentDetailsPage(task: readTask))
+            readComplianceDataStore.setCurrentTask(readTask)
+            return AnyView(DocumentDetailsPage(task: readTask).environmentObject(readComplianceDataStore))
         } else {
             // Default destination or handle other cases
             return AnyView(ErrorTaskView())

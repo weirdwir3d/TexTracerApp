@@ -1,9 +1,11 @@
 import SwiftUI
+import PDFKit
 
 struct DocumentDetailsPage: View {
     
     @EnvironmentObject var readComplianceDataStore: ReadComplianceDataStore
     var task: ReadDocumentTask
+    @State private var showPDFViewer = false
     
     var body: some View {
         NavigationView {
@@ -23,7 +25,7 @@ struct DocumentDetailsPage: View {
                             
                             if let filePath = readComplianceDataStore.getCurrentTask()?.filePath {
                                 VStack {
-                                    PDFThumbnailView(pdfURL: filePath, thumbnailSize: CGSize(width: 130, height: 180))
+                                    PDFThumbnail(pdfURL: filePath, thumbnailSize: CGSize(width: 130, height: 180))
                                 }
                             } else {
                                 Text("Thumbnail not available")
@@ -32,9 +34,10 @@ struct DocumentDetailsPage: View {
                         
                         VStack(alignment: .center, spacing: 12) {
                             CustomEmptyButton(action: {
-                                // Action when button is tapped
+                                //TODO: this does not work
+                                showPDFViewer.toggle()
                             }) {
-                                (Image(systemName: "square.and.arrow.up"), Text("Open in Browser"))
+                                (Image(systemName: "square.and.arrow.up"), Text("Open"))
                             }
                             
                             CustomEmptyButton(action: {
@@ -69,7 +72,6 @@ struct DocumentDetailsPage: View {
                                        let message = currentTask.messageFromSender {
                                         Text("Message").bold()
                                         Text("\(message)")
-                                        Divider()
                                     }
                                     
                                 } else {
@@ -83,40 +85,35 @@ struct DocumentDetailsPage: View {
                         }
                     }
                     
-                    //                    CommentSection()
-                    VStack {
-                        ChatBubble(direction: .left) {
-                            Text("Hello!")
-                                .padding(.all, 20)
-                                .foregroundColor(Color.white)
-                                .background(Color.theme.accentColor)
-                        }
-                        ChatBubble(direction: .right) {
-                            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut semper quam. Phasellus non mauris sem. Donec sed fermentum eros. Donec pretium nec turpis a semper. ")
-                                .padding(.all, 20)
-                                .foregroundColor(Color.white)
-                                .background(Color.theme.accentColor)
-                        }
-                        ChatBubble(direction: .right) {
-                            Image.init("dummyImage")
-                                .resizable()
-                                .frame(width: UIScreen.main.bounds.width - 70,
-                                       height: 200).aspectRatio(contentMode: .fill)
-                        }
-                    }
+                    
+                    CommentSection().environmentObject(readComplianceDataStore)
                     
                 }
                 
+                Spacer().frame(width: 50, height: 20)
+                
+                CustomFullButton(action: {
+                }) {
+                    Text("Reading confirmation")
+                }
+                .buttonStyle(PlainButtonStyle())
+                
             }
+            
+            
             
         }
         .navigationTitle("\(task.name)")
         .onAppear {
-                    readComplianceDataStore.setCurrentTask(task)
-                }
-        
-        
+            readComplianceDataStore.setCurrentTask(task)
+        }
+        .sheet(isPresented: $showPDFViewer) {
+            if let filePath = readComplianceDataStore.getCurrentTask()?.filePath {
+                PDFViewer(pdfURL: filePath)
+            }
+        }
     }
+    
 }
 
 #Preview {

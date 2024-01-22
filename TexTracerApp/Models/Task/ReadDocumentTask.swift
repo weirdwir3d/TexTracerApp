@@ -9,6 +9,7 @@ class ReadDocumentTask: Task {
     var pdfFile: Data?
     var filePath: URL?
     var messageFromSender: String?
+    @Published var messages: [Message] = []
 //    var pdfView = PDFView()
     
     init(id: UUID, receivedDate: Date, assignerId: UUID, assigneeId: UUID, name: String, pdfFileName: String, messageFromSender: String?) {
@@ -17,7 +18,6 @@ class ReadDocumentTask: Task {
         self.name = name
         self.pdfFileName = pdfFileName
         self.messageFromSender = messageFromSender
-//        self.pdfFile = nil  // Initialize to nil
 
         super.init(id: id, receivedDate: receivedDate)
         self.description = "Read \(name)"
@@ -30,17 +30,22 @@ class ReadDocumentTask: Task {
 //        }
     }
     
-//    func loadPdf() {
-//        guard let url = Bundle.main.url(forResource: pdfFileName, withExtension: "pdf") else {
-//            return
-//        }
-//        
-//        guard let document = PDFDocument(url: url) else {
-//            return
-//        }
-//        
-//        self.pdfView.document = document
-    //    }
+    func setMessages(_ newMessages: [Message]) {
+        messages = newMessages
+    }
+    
+    func getMessages() -> [Message] {
+            return messages
+        }
+        
+        func addMessage(content: String, dateTime: String) {
+            let newMessage = Message(content: content, dateTime: dateTime)
+            messages.append(newMessage)
+        }
+        
+        func addMessages(_ newMessages: [Message]) {
+            messages.append(contentsOf: newMessages)
+        }
     
     func generateFilePath(fileName: String) -> URL? {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "pdf") else {
@@ -69,47 +74,10 @@ class ReadDocumentTask: Task {
         }
     }
     
-    // Function to add the PDF file later
-//    func addPdfFile() {
-//        DispatchQueue.global().async { [self] in
-//            if let pdfPath = Bundle.main.url(forResource: pdfFileName, withExtension: "pdf") {
-//                print("PDF path: \(pdfPath)")
-//                if let pdfData = try? Data(contentsOf: pdfPath) {
-//                    DispatchQueue.main.async {
-//                        self.pdfFile = pdfData
-//                        print("PDF loaded successfully")
-//                    }
-//                } else {
-//                    print("Failed to load PDF data")
-//                }
-//            } else {
-//                print("PDF file not found in bundle")
-//            }
-//        }
-//    }
-
-
-    
     func isFileNil() -> Bool {
         return pdfFile == nil
     }
-//}
-//
-//class PDFLoader {
-//    static func loadPDF() -> Data? {
-//        // Replace "example" with the name of your PDF file (without the file extension)
-//        if let pdfPath = Bundle.main.url(forResource: "dummyFile", withExtension: "pdf") {
-//            do {
-//                let pdfData = try Data(contentsOf: pdfPath)
-//                return pdfData
-//            } catch {
-//                print("Error loading PDF data: \(error)")
-//            }
-//        } else {
-//            print("PDF file not found in bundle.")
-//        }
-//        return nil
-//    }
+
 }
 
 

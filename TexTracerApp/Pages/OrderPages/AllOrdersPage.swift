@@ -5,7 +5,7 @@ struct AllOrdersPage: View {
     
     @EnvironmentObject var tasksStore: TasksStore
     @State private var searchText = ""
-    @State private var selectedCategory = 0 // Start with Review
+    @State private var selectedCategory = 0
     @State private var selectedTask: Task? = nil
 
     var filteredTasks: [Task] {
@@ -61,16 +61,6 @@ struct AllOrdersPage: View {
     }
 }
 
-
-
-#Preview {
-    NavigationView{
-        AllOrdersPage()
-            .environmentObject(TasksStore.test)
-    }
-}
-
-
 struct SearchBar: View {
     @Binding var searchText: String
     
@@ -87,5 +77,9 @@ struct SearchBar: View {
     }
 }
 
-
-
+#Preview {
+    NavigationView{
+        AllOrdersPage()
+            .environmentObject(TasksStore.test)
+    }
+}

@@ -2,14 +2,14 @@ import Foundation
 
 class Task: Identifiable, ObservableObject, Hashable {
     let id: UUID
-    let receivedDate: Date
+    let receivedDate: String
     let taskStatus: TaskStatus
     var description: String
     var orderCode: String? // Optional field
 
     init(id: UUID, receivedDate: Date, orderCode: String? = nil) {
         self.id = id
-        self.receivedDate = receivedDate
+        self.receivedDate = DateUtility.formatDateTimeToString(receivedDate)
         self.description = ""
         self.taskStatus = TaskStatus.Incomplete
         self.orderCode = orderCode
@@ -24,7 +24,7 @@ class Task: Identifiable, ObservableObject, Hashable {
     }
 
     // Getter function for receivedDate
-    func getReceivedDate() -> Date {
+    func getReceivedDate() -> String {
         return receivedDate
     }
 
@@ -76,6 +76,23 @@ extension Task {
 
         return ReviewEvidenceTask(id: UUID(), receivedDate: Date(), orderCode: "TQX276", assignerId: UUID(), assigneeId: UUID(), orderSteps: orderSteps)
     }
+    
+    static var readDocumentTaskTest: Task {
+            let pdfFileName = "dummyFile"
+
+            if let pdfPath = Bundle.main.path(forResource: pdfFileName, ofType: "pdf"),
+               let pdfData = try? Data(contentsOf: URL(fileURLWithPath: pdfPath)) {
+                return ReadDocumentTask(
+                    id: UUID(),
+                    receivedDate: Date(),
+                    assignerId: UUID(),
+                    assigneeId: UUID(),
+                    name: "Delivery Manual 2023 (v3)",
+                    pdfFileName: pdfFileName,
+                    messageFromSender: dummyText()
+                )
+            } else {
+                fatalError("Unable to load the PDF file.")
+            }
+        }
 }
-
-

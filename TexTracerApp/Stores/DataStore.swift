@@ -12,7 +12,7 @@ class DataStore: ObservableObject {
     //all steps the user chose to upload order evidence for
     @Published private var selectedSteps: [OrderStep] = []
     //each step associated with one image
-    @Published private var picturesForSteps: [OrderStep: Image] = [:]
+    @Published private var picturesForSteps: [OrderStep: UIImage] = [:]
     //list of steps that share the same image
     @Published private var stepsWithSharedPicture: [OrderStep] = []
     //list of orders the user can upload evidence for
@@ -32,6 +32,16 @@ class DataStore: ObservableObject {
     //image that the user selects for order evidence before confirming its upload
     @Published private var selectedImage: UIImage?
     
+    
+    func resetSelectedImage() {
+        selectedImage = nil
+    }
+    
+    func saveSelectedImage() {
+        for currentStep in currentSteps {
+            picturesForSteps.updateValue(selectedImage!, forKey: currentStep)
+        }
+    }
     
     func setSelectedImage(_ image: UIImage?) {
         selectedImage = image
@@ -58,6 +68,10 @@ class DataStore: ObservableObject {
     
     func getDoneStepsProgressBar() -> [OrderStep] {
         return doneStepsProgressBar
+    }
+    
+    func addStepsToDoneStepsProgressBar(_ steps: [OrderStep]) {
+        doneStepsProgressBar.append(contentsOf: steps)
     }
     
     func addStepToDoneStepsProgressBar(_ step: OrderStep) {

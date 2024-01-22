@@ -1,19 +1,26 @@
 import Foundation
 
-@MainActor
-class TasksStore: ObservableObject {
-    
+class TasksStore: ObservableObject, CustomStringConvertible {
     @Published var tasks: [Task] = []
-    
+
     func getTasks() -> [Task] {
-        let tasksCopy = self.tasks
-        return self.tasks
+        return tasks
     }
-    
+
     func addTask(task: Task) {
         self.tasks.append(task)
     }
-    
+
+    func getTaskByIndex(index: Int) -> Task {
+        return tasks[index]
+    }
+
+    var description: String {
+        return """
+        TasksStore:
+          - Tasks: \(tasks)
+        """
+    }
 }
 
 extension TasksStore {
@@ -29,6 +36,8 @@ extension TasksStore {
         
         let reviewTaskTest = Task.reviewTaskTest
         let reviewTaskTest2 = Task.reviewTaskTest
+
+        let readDocumentTaskTest = Task.readDocumentTaskTest // Include the read document task
         
         tasksStore.addTask(task: uploadTaskTest)
         tasksStore.addTask(task: uploadTaskTest2)
@@ -37,6 +46,10 @@ extension TasksStore {
         tasksStore.addTask(task: reviewTaskTest)
         tasksStore.addTask(task: reviewTaskTest2)
         
+        tasksStore.addTask(task: readDocumentTaskTest) // Add the read document task
+        
         return tasksStore
     }
 }
+
+

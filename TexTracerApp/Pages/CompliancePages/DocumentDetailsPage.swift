@@ -6,6 +6,9 @@ struct DocumentDetailsPage: View {
     @EnvironmentObject var readComplianceDataStore: ReadComplianceDataStore
     var task: ReadDocumentTask
     @State private var showPDFViewer = false
+    @State private var toast: Toast? = nil
+    @State private var navigateToNextPage = false
+    @State private var isConfirmationChecked = false
     
     var body: some View {
         NavigationView {
@@ -34,14 +37,13 @@ struct DocumentDetailsPage: View {
                         
                         VStack(alignment: .center, spacing: 12) {
                             CustomEmptyButton(action: {
-                                //TODO: this does not work
                                 showPDFViewer.toggle()
                             }) {
                                 (Image(systemName: "square.and.arrow.up"), Text("Open"))
                             }
                             
                             CustomEmptyButton(action: {
-                                // Action when button is tapped
+                                downloadPDF()
                             }) {
                                 (Image(systemName: "arrow.down.to.line.compact"), Text("Download"))
                             }
@@ -92,11 +94,24 @@ struct DocumentDetailsPage: View {
                 
                 Spacer().frame(width: 50, height: 20)
                 
+                Toggle("I confirm I am authorised to give reading confirmation", isOn: $isConfirmationChecked)
+                    .toggleStyle(CheckboxToggleStyle())
+                    .padding()
+                
                 CustomFullButton(action: {
+                    navigateToNextPage = true
                 }) {
                     Text("Reading confirmation")
                 }
                 .buttonStyle(PlainButtonStyle())
+                .disabled(!isConfirmationChecked)
+                
+                NavigationLink(
+                    destination: UserFeedbackPage(), // Replace with the actual destination view
+                    isActive: $navigateToNextPage
+                ) {
+                    EmptyView()
+                }
                 
             }
             
@@ -114,6 +129,43 @@ struct DocumentDetailsPage: View {
         }
     }
     
+    private func downloadPDF() {
+        guard let currentTask = readComplianceDataStore.getCurrentTask() else {
+            print("No current task available.")
+            return
+        }
+        
+        guard let pdfPath = currentTask.filePath,
+              let pdfData = try? Data(contentsOf: pdfPath) else {
+            print("Failed to load PDF data.")
+            return
+        }
+
+        do {
+            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+
+            // Create the directory if it doesn't exist
+            try FileManager.default.createDirectory(at: documentsDirectory, withIntermediateDirectories: true, attributes: nil)
+
+            let destinationURL = documentsDirectory.appendingPathComponent(currentTask.pdfFileName)
+            
+            try pdfData.write(to: destinationURL)
+            print("PDF downloaded successfully at: \(destinationURL)")
+            
+            // Show the success toast
+            toast = Toast(style: .success, message: "\(currentTask.pdfFileName).pdf downloaded successfully!", width: 400)
+            
+        } catch {
+            print("Failed to save PDF data: \(error.localizedDescription)")
+            
+            // Show an error toast
+            toast = Toast(style: .error, message: "Failed to download PDF.", width: 400)
+        }
+    }
+
+    
+    
+    
 }
 
 #Preview {
@@ -125,6 +177,7 @@ struct DocumentDetailsPage: View {
                                              name: "Finestitch Delivery Manual 2023 (v2)",
                                              pdfFileName: "dummyFile",
                                              messageFromSender: dummyText())
+                        
     )
     .environmentObject(ReadComplianceDataStore())
 }

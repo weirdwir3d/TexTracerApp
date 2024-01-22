@@ -47,6 +47,10 @@
 		C8BB8DA92B5DC461009BFD7F /* DocumentDetailBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DA82B5DC461009BFD7F /* DocumentDetailBox.swift */; };
 		C8BB8DAC2B5DD2E2009BFD7F /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DAB2B5DD2E2009BFD7F /* DateUtility.swift */; };
 		C8BB8DAE2B5E7D54009BFD7F /* PDFViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DAD2B5E7D54009BFD7F /* PDFViewer.swift */; };
+		C8BB8DB02B5E9067009BFD7F /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DAF2B5E9067009BFD7F /* Toast.swift */; };
+		C8BB8DB22B5E90DF009BFD7F /* ToastStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DB12B5E90DF009BFD7F /* ToastStyle.swift */; };
+		C8BB8DB42B5E910D009BFD7F /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DB32B5E910D009BFD7F /* ToastView.swift */; };
+		C8BB8DB62B5E9781009BFD7F /* UserFeedbackPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DB52B5E9781009BFD7F /* UserFeedbackPage.swift */; };
 		C8C500602B2C4A0200B36674 /* CheckBoxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5005F2B2C4A0200B36674 /* CheckBoxToggleStyle.swift */; };
 		C8C500622B2C4CCE00B36674 /* StepSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C500612B2C4CCE00B36674 /* StepSwitch.swift */; };
 		C8C500642B2C692600B36674 /* UploadEvidenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C500632B2C692600B36674 /* UploadEvidenceView.swift */; };
@@ -140,6 +144,10 @@
 		C8BB8DA82B5DC461009BFD7F /* DocumentDetailBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDetailBox.swift; sourceTree = "<group>"; };
 		C8BB8DAB2B5DD2E2009BFD7F /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		C8BB8DAD2B5E7D54009BFD7F /* PDFViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewer.swift; sourceTree = "<group>"; };
+		C8BB8DAF2B5E9067009BFD7F /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		C8BB8DB12B5E90DF009BFD7F /* ToastStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastStyle.swift; sourceTree = "<group>"; };
+		C8BB8DB32B5E910D009BFD7F /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		C8BB8DB52B5E9781009BFD7F /* UserFeedbackPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackPage.swift; sourceTree = "<group>"; };
 		C8C5005F2B2C4A0200B36674 /* CheckBoxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxToggleStyle.swift; sourceTree = "<group>"; };
 		C8C500612B2C4CCE00B36674 /* StepSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSwitch.swift; sourceTree = "<group>"; };
 		C8C500632B2C692600B36674 /* UploadEvidenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadEvidenceView.swift; sourceTree = "<group>"; };
@@ -349,6 +357,7 @@
 				C86051C52B4F5CBD0047ADD4 /* OrderPages */,
 				C8E254252B27D39100274FC4 /* TasksPage.swift */,
 				C8E2542B2B27D65B00274FC4 /* MyAccountPage.swift */,
+				C8BB8DB52B5E9781009BFD7F /* UserFeedbackPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -387,6 +396,7 @@
 				C86F57272B5D6E7A004FA0F9 /* ChatBubbleShape.swift */,
 				C86F57292B5D6ED9004FA0F9 /* ChatBubble.swift */,
 				C8BB8DA82B5DC461009BFD7F /* DocumentDetailBox.swift */,
+				C8BB8DB32B5E910D009BFD7F /* ToastView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -411,6 +421,7 @@
 				C8F66DC92B1B7FA40011D89D /* Orderline.swift */,
 				C8F66DCD2B1B8A290011D89D /* OrderStep.swift */,
 				C8F66DD02B1B8AAA0011D89D /* Order.swift */,
+				C8BB8DAF2B5E9067009BFD7F /* Toast.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -432,6 +443,7 @@
 				C8F66DD42B1B90570011D89D /* TaskStatus.swift */,
 				C8F66DCB2B1B816C0011D89D /* Step.swift */,
 				C8E2543D2B2913E000274FC4 /* ChainType.swift */,
+				C8BB8DB12B5E90DF009BFD7F /* ToastStyle.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -568,6 +580,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8F66DCE2B1B8A290011D89D /* OrderStep.swift in Sources */,
+				C8BB8DB22B5E90DF009BFD7F /* ToastStyle.swift in Sources */,
 				C86F57282B5D6E7A004FA0F9 /* ChatBubbleShape.swift in Sources */,
 				C83C3B102B57FA1C00CAD385 /* SelectStepsArea.swift in Sources */,
 				C8C500622B2C4CCE00B36674 /* StepSwitch.swift in Sources */,
@@ -575,6 +588,7 @@
 				C86051C02B4F08560047ADD4 /* OrderDetailsArea.swift in Sources */,
 				C89390F12B51527200888446 /* OneChainLink.swift in Sources */,
 				C8E2543C2B29103400274FC4 /* OrderBadge.swift in Sources */,
+				C8BB8DB42B5E910D009BFD7F /* ToastView.swift in Sources */,
 				C86F572A2B5D6ED9004FA0F9 /* ChatBubble.swift in Sources */,
 				C8833BA72B51D70400D773AC /* CustomEmptyButton.swift in Sources */,
 				C8F66DC62B1B79A30011D89D /* Brand.swift in Sources */,
@@ -619,6 +633,7 @@
 				C88C0C6C2B5C7A0B006E1803 /* ReadDocumentTask.swift in Sources */,
 				C8A8F6FF2B5A9701009157BF /* UploadEvidenceArea.swift in Sources */,
 				C8C500642B2C692600B36674 /* UploadEvidenceView.swift in Sources */,
+				C8BB8DB02B5E9067009BFD7F /* Toast.swift in Sources */,
 				C8E254412B29B42300274FC4 /* TasksStore.swift in Sources */,
 				C8833BAA2B51DAE400D773AC /* CustomUnderlinedText.swift in Sources */,
 				C8BB8DAE2B5E7D54009BFD7F /* PDFViewer.swift in Sources */,
@@ -630,6 +645,7 @@
 				C8F66DC02B1B690A0011D89D /* Company.swift in Sources */,
 				C8E254282B27D61000274FC4 /* AllOrdersPage.swift in Sources */,
 				C86F571B2B5D387E004FA0F9 /* DocumentDetailsPage.swift in Sources */,
+				C8BB8DB62B5E9781009BFD7F /* UserFeedbackPage.swift in Sources */,
 				C8E254262B27D39100274FC4 /* TasksPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

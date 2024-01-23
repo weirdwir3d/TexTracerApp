@@ -4,6 +4,7 @@ import Combine
 
 struct CommentSection: View {
     
+    @EnvironmentObject var signComplianceDataStore: SignComplianceDataStore
     @EnvironmentObject var readComplianceDataStore: ReadComplianceDataStore
     @State private var keyboardHeight: CGFloat = 0
     

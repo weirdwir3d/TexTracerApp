@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TaskView: View {
     
+    @EnvironmentObject var signComplianceDataStore: SignComplianceDataStore
     @EnvironmentObject var readComplianceDataStore: ReadComplianceDataStore
     @EnvironmentObject var tasksStore: TasksStore
     let task: Task
@@ -25,7 +26,11 @@ struct TaskView: View {
         } else if let readTask = task as? ReadDocumentTask {
             // Handle other task types
             readComplianceDataStore.setCurrentTask(readTask)
-            return AnyView(DocumentDetailsPage(task: readTask).environmentObject(readComplianceDataStore))
+            return AnyView(ReadDocumentDetailsPage(task: readTask).environmentObject(readComplianceDataStore))
+        } else if let signTask = task as? SignDocumentTask {
+            // Handle other task types
+            signComplianceDataStore.setCurrentTask(signTask)
+            return AnyView(SignDocumentDetailsPage(task: signTask).environmentObject(signComplianceDataStore))
         } else {
             // Default destination or handle other cases
             return AnyView(ErrorTaskView())
@@ -45,6 +50,7 @@ struct TaskView: View {
         )
             .environmentObject(TasksStore())
             .environmentObject(ReadComplianceDataStore())
+            .environmentObject(SignComplianceDataStore())
     }
 }
 

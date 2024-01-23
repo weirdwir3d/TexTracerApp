@@ -63,7 +63,6 @@ struct SelectSameOrdersArea: View {
                     }
                 }
 //                print("Steps with same evidence before aligning: \(selectedDataStore.getAllSameEvidenceSteps())")
-                dataStore.alignSelectedStepsOrder()
                 
                 let filteredSteps = dataStore.getSelectedSteps()
                     .filter { orderStep in markedOrders.contains(orderStep.step.stringValue) }
@@ -109,7 +108,12 @@ struct SelectSameOrdersArea: View {
             .buttonStyle(PlainButtonStyle())
             
             // NavigationLink to the next page
-            NavigationLink("", destination: UploadEvidencePage().environmentObject(dataStore), isActive: $isNavigationActive)
+            
+            if let currentPassage = dataStore.getCurrentPassage() {
+                NavigationLink("", destination: UploadEvidencePage(passage: currentPassage).environmentObject(dataStore), isActive: $isNavigationActive)
+            } else {
+                Text("Error, cant navigate to next page")
+            }
             
             CustomEmptyButton(action: {
                 currentArea = 2
@@ -124,7 +128,8 @@ struct SelectSameOrdersArea: View {
             orders = dataStore.getOrders()
             
             var steps = dataStore.getSelectedSteps()
-            print("all (selected) steps after SelectSteps page: \(steps)")
+            //
+//            print("all (selected) steps after SelectSteps page: \(steps)")
         }
         
     }

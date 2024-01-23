@@ -4,6 +4,7 @@ struct TasksPage: View {
     
     @EnvironmentObject var tasksStore: TasksStore
     @EnvironmentObject var readComplianceDataStore: ReadComplianceDataStore
+    @EnvironmentObject var signComplianceStore: SignComplianceDataStore
     @State private var favoriteColor = 0
     
     var body: some View {
@@ -40,4 +41,5 @@ struct TasksPage: View {
     }
     .environmentObject(TasksStore())
     .environmentObject(ReadComplianceDataStore())
+    .environmentObject(SignComplianceDataStore())
 }

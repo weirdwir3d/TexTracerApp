@@ -95,4 +95,23 @@ extension Task {
                 fatalError("Unable to load the PDF file.")
             }
         }
+    
+    static var signDocumentTaskTest: Task {
+            let pdfFileName = "PinocchioFile"
+
+            if let pdfPath = Bundle.main.path(forResource: pdfFileName, ofType: "pdf"),
+               let pdfData = try? Data(contentsOf: URL(fileURLWithPath: pdfPath)) {
+                return ReadDocumentTask(
+                    id: UUID(),
+                    receivedDate: Date(),
+                    assignerId: UUID(),
+                    assigneeId: UUID(),
+                    name: "Delivery Manual 2023 (v3)",
+                    pdfFileName: pdfFileName,
+                    messageFromSender: dummyText()
+                )
+            } else {
+                fatalError("Unable to load the PDF file.")
+            }
+        }
 }

@@ -38,11 +38,49 @@ struct SelectSameStepsArea: View {
             }
             
             CustomFullButton(action: {
+                
+                dataStore.alignSelectedStepsOrder()
+                
                 for orderStep in orderSteps {
+                    print("orderStep: \(orderStep.step.stringValue)")
                     if toggledSteps.contains(orderStep.step.stringValue) {
                         dataStore.addSameEvidenceStep(orderStep)
                     }
                 }
+                
+                // create and add StepsPassage(s) to DataStore
+                var stepsSameEv: [OrderStep] = []
+                
+                for step in orderSteps {
+                    var steps: [OrderStep] = []
+                    if !dataStore.getAllSameEvidenceSteps().contains(step) {
+                        if stepsSameEv.count > 0 {
+                            dataStore.addPassage(StepPassage(steps: stepsSameEv))
+                            stepsSameEv.removeAll()
+                        }
+
+                        steps.append(step)
+                        dataStore.addPassage(StepPassage(steps: steps))
+                    } else {
+                        stepsSameEv.append(step)
+                    }
+                }
+                
+                if stepsSameEv.count > 0 {
+                    dataStore.addPassage(StepPassage(steps: stepsSameEv))
+                    stepsSameEv.removeAll()
+                }
+                
+                for passage in dataStore.getPassages() {
+                    print("PASSAGE:")
+                    passage?.printStepNames()
+                }
+                
+                if let firstPassage = dataStore.getPassages().first {
+                    dataStore.setCurrentPassage(firstPassage!)
+                }
+
+                
 //                print("same evidence steps: \(selectedDataStore.getAllSameEvidenceSteps())")
 //                print("Steps with same evidence: \(selectedDataStore.getAllSameEvidenceSteps())")
                 

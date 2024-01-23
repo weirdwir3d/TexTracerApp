@@ -1,101 +1,166 @@
 import SwiftUI
 
 struct UploadEvidencePage: View {
-    
+    let passage: StepPassage
     @EnvironmentObject var dataStore: DataStore
-    @State private var steps: [OrderStep] = []
-    @State private var visibleAreas: [UploadEvidenceArea] = []
-    @State private var currentAreaIndex: Int = 0
-
-    var isSelectedPicture: Bool {
-            guard currentAreaIndex < visibleAreas.count else {
-                return true
-            }
-
-        return dataStore.getSelectedImage() == nil
+    @State private var task: UploadEvidenceTask = Task.uploadTaskTest as! UploadEvidenceTask
+    @State private var showAlert: Bool = false
+    @State private var showActionSheet: Bool = false
+    @State var allStyleNrs: [String] = []
+    @State private var imagePickerSourceType: UIImagePickerController.SourceType?
+    @State private var selectedImage: UIImage? {
+        didSet {
+            dataStore.setSelectedImage(selectedImage)
         }
+    }
     
     var body: some View {
         VStack {
+            ProgressBar().environmentObject(dataStore)
+            let _ = print("---------View appeared or re-rendered-----------")
+            let _ = print("ALL STEPS: \(dataStore.getSelectedSteps())")
+            let _ = print("DONE STEPS: \(dataStore.getDoneStepsProgressBar())")
+            let _ = print("REMAINING STEPS: \(dataStore.getRemainingSteps())")
+            let _ = print("CURRENT PASSAGE: \(String(describing: dataStore.getCurrentPassage()))")
+            let _ = print("NEXT PASSAGE: \(String(describing: dataStore.nextPassage(after: passage)))")
             
-            // Display the current UploadEvidenceArea
-            if visibleAreas.indices.contains(currentAreaIndex) {
-                visibleAreas[currentAreaIndex].environmentObject(dataStore)
+            Spacer().frame(height: 50)
+            
+            ScrollView {
+                
+                VStack {
+                    if let selectedImage = dataStore.getSelectedImage() {
+                        ImageBoxView(image: selectedImage).environmentObject(dataStore)
+                    } else {
+                        UploadPictureButton(showAlert: $showAlert, showActionSheet: $showActionSheet, imagePickerSourceType: $imagePickerSourceType, selectedImage: $selectedImage)
+                    }
+                    
+                    //all order info
+                    WhiteBox {
+                        VStack(alignment: .leading) {
+                            
+                            //current steps
+                            Text("Current steps").bold()
+                            Text(dataStore.getCurrentSteps().map { "\($0.step.stringValue)" }.joined(separator: ", "))
+                            Divider()
+                            
+                            //orders
+                            Text("Orders").bold()
+                            Text(dataStore.getSelectedOrders().map { "\($0.code)" }.joined(separator: ", "))
+                            Divider()
+                            
+                            //assigned by
+                            Text("Assigned by").bold()
+                            Text("\(task.assignerId)")
+                            Divider()
+                            
+                            //date
+                            Text("Date").bold()
+                            Text("\(task.receivedDate)")
+                            Divider()
+                            
+                            //style nrs
+                            Text("Style numbers").bold()
+                            Text(allStyleNrs.map { "\($0)" }.joined(separator: ", "))
+                            Divider()
+                            
+                            //final client
+                            Text("Final client").bold()
+                            if let orderCode = task.orderCode {
+                                Text(orderCode)
+                            } else {
+                                Text("No order code")
+                            }
+                            
+                        }
+                        
+                    }.padding()
+                    
+                }
+                .onAppear {
+                    self.task = dataStore.getCurrentTask() as! UploadEvidenceTask
+                    
+                    for order in dataStore.getOrders() {
+                        let styleNr = order.getStyleNumber()
+                        if !allStyleNrs.contains(styleNr) {
+                            allStyleNrs.append(styleNr)
+                        }
+                    }
+                    
+                    print("CURRENT STEPS: \(dataStore.getCurrentSteps().map { "\($0.step.stringValue)" }.joined(separator: ", "))")
+                    //                print("currentTask: \(task.toString())")
+                }
+                .sheet(isPresented: Binding<Bool>(
+                    get: { imagePickerSourceType != nil },
+                    set: { _ in imagePickerSourceType = nil }
+                )) {
+                    ImagePickerView(sourceType: imagePickerSourceType ?? .camera) { image in
+                        // Use the selected image, you can implement your logic here
+                        selectedImage = image
+                        //                    print("Selected image: \(image)")
+                    }
+                }
+                
+                
             }
             
+            //             next page
+            NavigationLink(destination: nextPage()) {
                 CustomFullButton(action: {
-                    // save selectedPicture to array in dataStore and reset selectedPicture value so that it can be used for the next area
-                    dataStore.saveSelectedImage()
-                    let currentSteps = dataStore.getCurrentSteps()
-                    dataStore.addStepsToDoneStepsProgressBar(currentSteps)
+                    
+                    if let nextPassage = dataStore.nextPassage(after: passage) {
+                        dataStore.setCurrentPassage(nextPassage)
+                    }
+                    
+                    dataStore.addStepsToDoneStepsProgressBar(passage.steps)
+                    dataStore.clearCurrentSteps()
                     dataStore.resetSelectedImage()
                     
-                    navigateToNextArea()
-                    
-                    
+                    print("done steps: \(dataStore.getDoneStepsProgressBar())")
                 }) {
                     Text("Next")
                 }
                 .buttonStyle(PlainButtonStyle())
-                .disabled(currentAreaIndex == visibleAreas.count - 1 || isSelectedPicture)
-
-                
-                CustomEmptyButton(action: {
-                    navigateToPreviousArea()
-                }) {
-                    (nil, Text("Previous"))
-                }
-                .buttonStyle(PlainButtonStyle())
-                .disabled(currentAreaIndex == 0)
-
-        }
-        .onAppear {
-            // Assign the result directly to visibleAreas
-            visibleAreas = generatePagesForSteps(dataStore)
-//            print("visible areas: \(visibleAreas)")
-        }
-    }
-
-    func generatePagesForSteps(_ dataStore: DataStore) -> [UploadEvidenceArea] {
-        let listBooleanSteps = dataStore.getListBooleanSteps()
-        var counter: Int = 0
-        var hasFoundTrue = false
-        
-        for boolVal in listBooleanSteps.values {
-            if boolVal && !hasFoundTrue {
-                counter += 1
-                hasFoundTrue = true
             }
-            if !boolVal {
-                counter += 1
+            
+            
+            //back page
+            CustomEmptyButton(action: {
+                //
+            }) {
+                (nil, Text("Back to Select steps"))
             }
+            .buttonStyle(PlainButtonStyle())
+            
         }
         
-        var visibleAreas: [UploadEvidenceArea] = []
-        
-        for n in 0..<counter {
-            visibleAreas.append(UploadEvidenceArea(index: n))
+    }
+    
+    @ViewBuilder
+    private func nextPage() -> some View {
+        if let nextPassage = dataStore.nextPassage(after: passage) {
+            let _ = print("Navigating to next passage: \(nextPassage)")
+            return UploadEvidencePage(passage: nextPassage)
+        } else {
+            let _ = print("Navigating to UserFeedbackPage")
+            return UserFeedbackPage()
         }
-        
-        return visibleAreas
     }
 
-    func navigateToPreviousArea() {
-        if currentAreaIndex > 0 {
-            currentAreaIndex -= 1
-        }
-    }
-
-    func navigateToNextArea() {
-        if currentAreaIndex < visibleAreas.count - 1 {
-            currentAreaIndex += 1
-        }
-    }
+    
 }
 
 
 
 #Preview {
-    UploadEvidencePage()
-        .environmentObject(DataStore())
+    UploadEvidencePage(passage: StepPassage(steps:
+                                                [OrderStep(id: UUID(), step: Step.Dyeing, supplierId: UUID()),
+                                                 OrderStep(id: UUID(), step: Step.Tanning, supplierId: UUID()),
+                                                 OrderStep(id: UUID(), step: Step.FabricTrading, supplierId: UUID()),
+                                                 OrderStep(id: UUID(), step: Step.DesignAndDevelopment, supplierId: UUID()),
+                                                 OrderStep(id: UUID(), step: Step.Printing, supplierId: UUID()),
+                                                ]
+                                           )
+    )
+    .environmentObject(DataStore())
 }

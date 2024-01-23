@@ -5,6 +5,9 @@ import Combine
 //keeps track of what the user chooses to upload order evidence for
 class DataStore: ObservableObject {
     
+    @Published private var passages: [StepPassage?] = []
+    @Published var currentPassage: StepPassage?
+    
     //current task
     @Published private var currentTask: UploadEvidenceTask?
     //all steps of an order
@@ -31,7 +34,38 @@ class DataStore: ObservableObject {
     
     //image that the user selects for order evidence before confirming its upload
     @Published private var selectedImage: UIImage?
+
     
+    func getPassages() -> [StepPassage?] {
+        return passages
+    }
+    
+    func addPassage(_ passage: StepPassage) {
+        passages.append(passage)
+    }
+    
+    func getCurrentPassage() -> StepPassage? {
+        return currentPassage
+    }
+    
+    func setCurrentPassage(_ passage: StepPassage) {
+        currentPassage = passage
+    }
+    
+    //calculate next passage based on allSteps, completedSteps and remainingSteps
+    func nextPassage(after currentPassage: StepPassage) -> StepPassage? {
+        for (index, passage) in passages.enumerated() {
+            if let passage = passage, passage == currentPassage, index < passages.count - 1 {
+                return passages[index + 1]
+            }
+        }
+        return nil
+    }
+
+    
+    func getRemainingSteps() -> [OrderStep] {
+        return selectedSteps.filter { !doneStepsProgressBar.contains($0) }
+    }
     
     func resetSelectedImage() {
         selectedImage = nil
@@ -54,6 +88,12 @@ class DataStore: ObservableObject {
     
     func getCurrentSteps() -> [OrderStep] {
         return currentSteps
+    }
+    
+    func addStepsToCurrentSteps(_ stepsToAdd: [OrderStep]) {
+        if !currentSteps.contains(stepsToAdd) {
+            currentSteps.append(contentsOf: stepsToAdd)
+        }
     }
 
     func addStepToCurrentSteps(_ stepToAdd: OrderStep) {

@@ -52,10 +52,12 @@
 		C8BB8DB42B5E910D009BFD7F /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DB32B5E910D009BFD7F /* ToastView.swift */; };
 		C8BB8DB62B5E9781009BFD7F /* UserFeedbackPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DB52B5E9781009BFD7F /* UserFeedbackPage.swift */; };
 		C8BB8DB82B5EBB99009BFD7F /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DB72B5EBB99009BFD7F /* View.swift */; };
+		C8BB8DBB2B5EF477009BFD7F /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DBA2B5EF477009BFD7F /* OrderViewModel.swift */; };
+		C8BB8DBD2B5F4317009BFD7F /* StepPassage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB8DBC2B5F4317009BFD7F /* StepPassage.swift */; };
 		C8C500602B2C4A0200B36674 /* CheckBoxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5005F2B2C4A0200B36674 /* CheckBoxToggleStyle.swift */; };
 		C8C500622B2C4CCE00B36674 /* StepSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C500612B2C4CCE00B36674 /* StepSwitch.swift */; };
 		C8C500642B2C692600B36674 /* UploadEvidenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C500632B2C692600B36674 /* UploadEvidenceView.swift */; };
-		C8C500662B2E101A00B36674 /* StepsProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C500652B2E101A00B36674 /* StepsProgressBar.swift */; };
+		C8C500662B2E101A00B36674 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C500652B2E101A00B36674 /* ProgressBar.swift */; };
 		C8E254232B27C56300274FC4 /* UploadEvidenceTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254222B27C56300274FC4 /* UploadEvidenceTask.swift */; };
 		C8E254262B27D39100274FC4 /* TasksPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254252B27D39100274FC4 /* TasksPage.swift */; };
 		C8E254282B27D61000274FC4 /* AllOrdersPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E254272B27D61000274FC4 /* AllOrdersPage.swift */; };
@@ -150,10 +152,12 @@
 		C8BB8DB32B5E910D009BFD7F /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		C8BB8DB52B5E9781009BFD7F /* UserFeedbackPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackPage.swift; sourceTree = "<group>"; };
 		C8BB8DB72B5EBB99009BFD7F /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		C8BB8DBA2B5EF477009BFD7F /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		C8BB8DBC2B5F4317009BFD7F /* StepPassage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepPassage.swift; sourceTree = "<group>"; };
 		C8C5005F2B2C4A0200B36674 /* CheckBoxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxToggleStyle.swift; sourceTree = "<group>"; };
 		C8C500612B2C4CCE00B36674 /* StepSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepSwitch.swift; sourceTree = "<group>"; };
 		C8C500632B2C692600B36674 /* UploadEvidenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadEvidenceView.swift; sourceTree = "<group>"; };
-		C8C500652B2E101A00B36674 /* StepsProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsProgressBar.swift; sourceTree = "<group>"; };
+		C8C500652B2E101A00B36674 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		C8E254222B27C56300274FC4 /* UploadEvidenceTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadEvidenceTask.swift; sourceTree = "<group>"; };
 		C8E254252B27D39100274FC4 /* TasksPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksPage.swift; sourceTree = "<group>"; };
 		C8E254272B27D61000274FC4 /* AllOrdersPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOrdersPage.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 		C8B851812B1A336300FE593C /* TexTracerApp */ = {
 			isa = PBXGroup;
 			children = (
+				C8BB8DB92B5EF3EA009BFD7F /* ViewModels */,
 				C8BB8DAA2B5DCCE2009BFD7F /* Utils */,
 				C8E2543F2B29B40000274FC4 /* Stores */,
 				C8E254322B28F7B200274FC4 /* Components */,
@@ -341,6 +346,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		C8BB8DB92B5EF3EA009BFD7F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C8BB8DBA2B5EF477009BFD7F /* OrderViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		C8E254212B27C4C200274FC4 /* Task */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,7 +400,7 @@
 				C8C5005F2B2C4A0200B36674 /* CheckBoxToggleStyle.swift */,
 				C8C500612B2C4CCE00B36674 /* StepSwitch.swift */,
 				C8C500632B2C692600B36674 /* UploadEvidenceView.swift */,
-				C8C500652B2E101A00B36674 /* StepsProgressBar.swift */,
+				C8C500652B2E101A00B36674 /* ProgressBar.swift */,
 				C86051BF2B4F08560047ADD4 /* OrderDetailsArea.swift */,
 				C8833BA92B51DAE400D773AC /* CustomUnderlinedText.swift */,
 				C8A8F7032B5B29C0009157BF /* ImagePickerView.swift */,
@@ -425,6 +438,7 @@
 				C8F66DCD2B1B8A290011D89D /* OrderStep.swift */,
 				C8F66DD02B1B8AAA0011D89D /* Order.swift */,
 				C8BB8DAF2B5E9067009BFD7F /* Toast.swift */,
+				C8BB8DBC2B5F4317009BFD7F /* StepPassage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -609,6 +623,7 @@
 				C8E2543A2B29037000274FC4 /* WhiteBox.swift in Sources */,
 				C86F57202B5D3E20004FA0F9 /* PDFThumbnail.swift in Sources */,
 				C89390F32B5157E800888446 /* LastChainLink.swift in Sources */,
+				C8BB8DBD2B5F4317009BFD7F /* StepPassage.swift in Sources */,
 				C8F66DD12B1B8AAA0011D89D /* Order.swift in Sources */,
 				C8A8F7062B5B2E63009157BF /* ImageBoxView.swift in Sources */,
 				C8ECFF472B2A22D600D667F2 /* ChainLinks.swift in Sources */,
@@ -629,10 +644,11 @@
 				C8E254362B28FD2F00274FC4 /* TaskDetailView.swift in Sources */,
 				C83C3B122B57FEBE00CAD385 /* SelectSameStepsArea.swift in Sources */,
 				C86F57262B5D6A8D004FA0F9 /* Message.swift in Sources */,
+				C8BB8DBB2B5EF477009BFD7F /* OrderViewModel.swift in Sources */,
 				C86F57222B5D5249004FA0F9 /* CommentTextField.swift in Sources */,
 				C8BB8DAC2B5DD2E2009BFD7F /* DateUtility.swift in Sources */,
 				C8A8F7022B5B28CE009157BF /* UploadPictureButton.swift in Sources */,
-				C8C500662B2E101A00B36674 /* StepsProgressBar.swift in Sources */,
+				C8C500662B2E101A00B36674 /* ProgressBar.swift in Sources */,
 				C81AD6592B5149F0007494FE /* OrderDetailsPage.swift in Sources */,
 				C88C0C6C2B5C7A0B006E1803 /* ReadDocumentTask.swift in Sources */,
 				C8A8F6FF2B5A9701009157BF /* UploadEvidenceArea.swift in Sources */,

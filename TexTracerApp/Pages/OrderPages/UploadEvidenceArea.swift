@@ -17,8 +17,8 @@ struct UploadEvidenceArea: View {
     }
     
     var body: some View {
-        StepsProgressBar(steps: dataStore.getStepsProgressBar())
-            .environmentObject(dataStore)
+//        ProgressBar(steps: dataStore.getStepsProgressBar())
+//            .environmentObject(dataStore)
         
         Spacer().frame(height: 50)
         
@@ -71,10 +71,6 @@ struct UploadEvidenceArea: View {
                         }
                     
                 }
-                
-//                                if let selectedImage = selectedImage {
-//                                    ImageBoxView(image: selectedImage)
-//                                }
                 
             }
             .onAppear {

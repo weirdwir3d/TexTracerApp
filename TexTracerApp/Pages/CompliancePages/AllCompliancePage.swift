@@ -10,8 +10,10 @@ struct AllCompliancePage: View {
     var filteredTasks: [Task] {
         switch selectedCategory {
         case 0:
-            return tasksStore.getTasks().filter { $0 is ReviewEvidenceTask }
+            // Filter SignDocumentTasks when "Sign" is selected
+            return tasksStore.getTasks().filter { $0 is SignDocumentTask }
         case 1:
+            // Filter ReadDocumentTasks when "Read" is selected
             return tasksStore.getTasks().filter { $0 is ReadDocumentTask }
         default:
             return []
@@ -33,8 +35,15 @@ struct AllCompliancePage: View {
             
             ScrollView {
                 LazyVStack {
-                    ForEach(filteredTasks.compactMap { $0 as? ReadDocumentTask }) { task in
-                        DocumentDetailBox(task: task)
+                    // Use conditional casting to filter based on task type
+                    if selectedCategory == 0 {
+                        ForEach(filteredTasks.compactMap { $0 as? SignDocumentTask }) { task in
+                            SignDocumentDetailBox(task: task)
+                        }
+                    } else if selectedCategory == 1 {
+                        ForEach(filteredTasks.compactMap { $0 as? ReadDocumentTask }) { task in
+                            ReadDocumentDetailBox(task: task)
+                        }
                     }
                 }.padding()
             }
@@ -51,13 +60,11 @@ struct AllCompliancePage: View {
     }
 }
 
-#Preview {
-    AllCompliancePage()
-        .environmentObject(ReadComplianceDataStore())
+// Preview
+struct AllCompliancePage_Previews: PreviewProvider {
+    static var previews: some View {
+        AllCompliancePage()
+            .environmentObject(TasksStore.test)
+    }
 }
 
-
-#Preview {
-    AllCompliancePage()
-        .environmentObject(ReadComplianceDataStore())
-}

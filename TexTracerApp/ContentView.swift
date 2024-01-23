@@ -2,8 +2,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject var readComplianceStore = ReadComplianceDataStore()
     @StateObject var tasksStore = TasksStore()
+    @StateObject var readComplianceStore = ReadComplianceDataStore()
+    @StateObject var signComplianceStore = SignComplianceDataStore()
     
     var body: some View {
         NavigationView {
@@ -11,6 +12,7 @@ struct ContentView: View {
                 TasksPage()
                     .environmentObject(tasksStore)
                     .environmentObject(readComplianceStore)
+                    .environmentObject(signComplianceStore)
                     .tabItem {
                         Image(systemName: "checklist")
                         Text("Tasks")
@@ -26,6 +28,7 @@ struct ContentView: View {
                 AllCompliancePage()
                     .environmentObject(tasksStore)
                     .environmentObject(readComplianceStore)
+                    .environmentObject(signComplianceStore)
                     .tabItem {
                         Image(systemName: "doc")
                         Text("Compliance")
@@ -49,6 +52,7 @@ struct ContentView: View {
         
     }
     
+//    DUMMY DATA
     func loadInitialData() {
         let hnm = Brand(id: UUID(), registrationNr: 1, name: "H&M")
         let texfiber = Supplier(id: UUID(), registrationNr: 2, name: "Texfiber")
@@ -96,6 +100,16 @@ struct ContentView: View {
         }
         print(self.tasksStore.getTasks())
         
+        //dummy sign doc task
+        let signTask1 = SignDocumentTask(id: UUID(),
+                                         receivedDate: Date(),
+                                         assignerId: fashionLead.id,
+                                         assigneeId: texfiber.id,
+                                         name: "Code of Conduct Update - Zara",
+                                         pdfFileName: "Pinocchio",
+                                         messageFromSender: "You better sign this",
+                                         signDeadline: DateUtility.formatDateTimeToString(Date()))
+        signTask1.addMessage(content: "I don't follow your rules", dateTime: DateUtility.formatDateTimeToString(Date()))
 
         //dummy read doc task
         let readTask1 = ReadDocumentTask(id: UUID(),
@@ -105,10 +119,8 @@ struct ContentView: View {
                                          name: "Finestitch Delivery Manual 2023 (v2)",
                                          pdfFileName: "dummyFile",
                                          messageFromSender: dummyText())
-        var path = readTask1.generateFilePath(fileName: "dummyFile")
         readTask1.addMessage(content: dummyText(), dateTime: DateUtility.formatDateTimeToString(Date()))
         readTask1.addMessage(content: "This is another message, who would have thought", dateTime: DateUtility.formatDateTimeToString(Date()))
-        readTask1.addMessage(content: "Pls let us pass lol", dateTime: DateUtility.formatDateTimeToString(Date()))
         readTask1.addMessage(content: "That does not look like a Delivery manual to me", dateTime: DateUtility.formatDateTimeToString(Date()))
         readTask1.addMessage(content: "It's actually an amazing book about PTSD (first found and studied in Vietnam veterans) and its impact on society", dateTime: DateUtility.formatDateTimeToString(Date()))
         //        print("heres the path \(path)")
@@ -119,16 +131,27 @@ struct ContentView: View {
 //            print("LOADED FILE: \(readTask1.pdfFile)")
             self.tasksStore.addTask(task: readTask1)
             self.readComplianceStore.addTask(readTask1)
+            print("readTaskStore: \(readComplianceStore)")
         }
         
-        print("\(readComplianceStore.getTasks())")
+        signTask1.addPdfFile {
+            // This code block will be executed once the PDF is loaded
+//            print("\(readTask1.isFileNil())")
+//            print("LOADED FILE: \(readTask1.pdfFile)")
+            self.tasksStore.addTask(task: signTask1)
+            self.signComplianceStore.addTask(signTask1)
+            print("signTaskStore: \(signComplianceStore)")
+        }
+ 
         
     }
     
 }
 
+
+
 func dummyText() -> String {
-    var dummyText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    var dummyText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
     return dummyText
 }
 

@@ -38,6 +38,7 @@ extension TasksStore {
         let reviewTaskTest2 = Task.reviewTaskTest
 
         let readDocumentTaskTest = Task.readDocumentTaskTest // Include the read document task
+        let signDocumentTaskTest = Task.signDocumentTaskTest
         
         tasksStore.addTask(task: uploadTaskTest)
         tasksStore.addTask(task: uploadTaskTest2)

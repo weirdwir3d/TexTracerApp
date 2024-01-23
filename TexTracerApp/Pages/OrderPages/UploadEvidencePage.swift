@@ -140,10 +140,10 @@ struct UploadEvidencePage: View {
     private func nextPage() -> some View {
         if let nextPassage = dataStore.nextPassage(after: passage) {
             let _ = print("Navigating to next passage: \(nextPassage)")
-            return UploadEvidencePage(passage: nextPassage)
+            UploadEvidencePage(passage: nextPassage)
         } else {
             let _ = print("Navigating to UserFeedbackPage")
-            return UserFeedbackPage()
+            UserFeedbackPage()
         }
     }
 

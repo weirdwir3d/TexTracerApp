@@ -21,7 +21,26 @@ struct AllOrdersPage: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            ZStack(alignment: .top) {
+                VStack {
+                    SearchBar(searchText: $searchText).padding(.horizontal)
+                    
+                    if filteredTasks.isEmpty {
+                        Text("No Tasks")
+                            .padding()
+                    } else {
+                        ScrollView {
+                            LazyVStack {
+                                ForEach(filteredTasks) { task in
+                                    OrderEvidenceDetailBox(task: task)
+                                }
+                            }
+                        }
+                    }
+                }
+                .background(Color(.systemBackground))
+                
+                // Place the Picker at the top
                 Picker("Select Category", selection: $selectedCategory) {
                     Text("Review").tag(0)
                     Text("Upload").tag(1)
@@ -30,24 +49,7 @@ struct AllOrdersPage: View {
                 .pickerStyle(.segmented)
                 .padding(.horizontal)
                 .padding(.top)
-                
-                SearchBar(searchText: $searchText).padding(.horizontal)
-                
-                if filteredTasks.isEmpty {
-                    Text("No Tasks")
-                        .padding()
-                } else {
-                    ScrollView {
-                        LazyVStack {
-                            ForEach(filteredTasks) { task in
-                                OrderEvidenceDetailBox(task: task)
-                            }
-                        }
-                    }
-
-                }
             }
-            .background(Color(.systemBackground))
             .navigationBarTitle("All orders", displayMode: .inline)
             .navigationBarItems(trailing:
                 Button(action: {
@@ -77,9 +79,13 @@ struct SearchBar: View {
     }
 }
 
-#Preview {
-    NavigationView{
-        AllOrdersPage()
-            .environmentObject(TasksStore.test)
+// Preview
+struct AllOrdersPage_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            AllOrdersPage()
+                .environmentObject(TasksStore.test)
+        }
     }
 }
+
